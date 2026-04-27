@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 56" fill="none" stroke="#1A1A1A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Benzene ring (hexagon, pointy top/bottom) -->
+  <polygon points="22,4 38,14 38,34 22,44 6,34 6,14"/>
+  <!-- Aromatic indicator -->
+  <circle cx="22" cy="24" r="8.5" stroke-width="1.1"/>
+  <!-- Pyrrole ring (pentagon) fused on the right edge -->
+  <polygon points="38,14 50,11 58,24 50,37 38,34"/>
+  <!-- Pyrrole nitrogen indicator: small filled dot at the top vertex (N1-H) -->
+  <circle cx="50" cy="11" r="1.4" fill="#1A1A1A" stroke="none"/>
+  <!-- Side chain: ethyl zigzag from C3 of pyrrole toward the right -->
+  <polyline points="58,24 67,30 76,24 85,30"/>
+  <!-- Terminal nitrogen indicator -->
+  <circle cx="85" cy="30" r="1.6" fill="#1A1A1A" stroke="none"/>
+  <!-- Two methyl branches off the terminal N (the N(CH3)2 of DMT) -->
+  <line x1="85" y1="30" x2="95" y2="22"/>
+  <line x1="85" y1="30" x2="95" y2="38"/>
+</svg>
