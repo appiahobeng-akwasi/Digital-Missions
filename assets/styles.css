@@ -1322,54 +1322,52 @@ a.argument-card__title:hover {
 
 .summary-list {
   display: grid;
-  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.summary-list > li {
+.summary-card {
+  background: var(--color-bg);
+  padding: 1.5rem;
   display: grid;
-  grid-template-columns: 2.5rem 1fr;
-  gap: 1.25rem;
-  padding-block: 0.5rem 0;
-  border-top: 1px solid var(--color-border);
-  padding-top: 1.25rem;
-  align-items: baseline;
+  gap: 0.6rem;
+  align-content: start;
+  min-height: 220px;
 }
 
-.summary-list > li:first-child {
-  border-top: 0;
-  padding-top: 0;
-}
-
-.summary-list .summary-num {
+.summary-card__index {
+  display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding-top: 0.4rem;
+  color: var(--color-text-muted);
 }
 
-.summary-list .summary-title {
+.summary-card__title {
   display: block;
+  margin: 0;
   font-family: var(--font-serif);
   font-size: var(--text-xl);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.18;
   letter-spacing: -0.008em;
   color: var(--color-text);
-  margin-bottom: 0.4rem;
+  text-wrap: balance;
 }
 
-.summary-list .summary-body {
+.summary-card__body {
+  display: block;
+  margin: 0.35rem 0 0;
   color: var(--color-text-muted);
-  font-size: 1.0625rem;
+  font-size: 0.9375rem;
   line-height: 1.55;
-  max-width: 60ch;
-  margin: 0;
 }
 
 /* Read more / Show less disclosure */
@@ -1444,10 +1442,18 @@ details.read-more > .read-more__body {
   details.read-more > .read-more__body { animation: none; }
 }
 
-@media (min-width: 720px) {
-  .summary-list > li {
-    grid-template-columns: 3rem 1fr;
-    gap: 2rem;
+@media (min-width: 640px) {
+  .summary-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .summary-card {
+    padding: 1.75rem;
+    min-height: 240px;
+  }
+  /* Last card spans full width when total is odd (5, 7, ...) */
+  .summary-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    min-height: auto;
   }
 }
 
