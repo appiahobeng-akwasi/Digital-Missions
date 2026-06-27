@@ -122,6 +122,175 @@
     </div>
   </section>
 
+  <!-- ECOWAS country flywheel -->
+  <div class="country-flywheel" aria-label="ECOWAS member states">
+    <div class="country-flywheel__track" aria-hidden="true">
+      <article class="country-card"><span class="country-card__name">Benin</span><span class="country-card__code">BEN</span></article>
+      <article class="country-card"><span class="country-card__name">Burkina Faso</span><span class="country-card__code">BFA</span></article>
+      <article class="country-card"><span class="country-card__name">Cape Verde</span><span class="country-card__code">CPV</span></article>
+      <article class="country-card"><span class="country-card__name">C&ocirc;te d&rsquo;Ivoire</span><span class="country-card__code">CIV</span></article>
+      <article class="country-card"><span class="country-card__name">Gambia</span><span class="country-card__code">GMB</span></article>
+      <article class="country-card"><span class="country-card__name">Ghana</span><span class="country-card__code">GHA</span></article>
+      <article class="country-card"><span class="country-card__name">Guinea</span><span class="country-card__code">GIN</span></article>
+      <article class="country-card"><span class="country-card__name">Guinea-Bissau</span><span class="country-card__code">GNB</span></article>
+      <article class="country-card"><span class="country-card__name">Liberia</span><span class="country-card__code">LBR</span></article>
+      <article class="country-card"><span class="country-card__name">Mali</span><span class="country-card__code">MLI</span></article>
+      <article class="country-card"><span class="country-card__name">Niger</span><span class="country-card__code">NER</span></article>
+      <article class="country-card"><span class="country-card__name">Nigeria</span><span class="country-card__code">NGA</span></article>
+      <article class="country-card"><span class="country-card__name">Senegal</span><span class="country-card__code">SEN</span></article>
+      <article class="country-card"><span class="country-card__name">Sierra Leone</span><span class="country-card__code">SLE</span></article>
+      <article class="country-card"><span class="country-card__name">Togo</span><span class="country-card__code">TGO</span></article>
+      <!-- duplicate for seamless loop -->
+      <article class="country-card"><span class="country-card__name">Benin</span><span class="country-card__code">BEN</span></article>
+      <article class="country-card"><span class="country-card__name">Burkina Faso</span><span class="country-card__code">BFA</span></article>
+      <article class="country-card"><span class="country-card__name">Cape Verde</span><span class="country-card__code">CPV</span></article>
+      <article class="country-card"><span class="country-card__name">C&ocirc;te d&rsquo;Ivoire</span><span class="country-card__code">CIV</span></article>
+      <article class="country-card"><span class="country-card__name">Gambia</span><span class="country-card__code">GMB</span></article>
+      <article class="country-card"><span class="country-card__name">Ghana</span><span class="country-card__code">GHA</span></article>
+      <article class="country-card"><span class="country-card__name">Guinea</span><span class="country-card__code">GIN</span></article>
+      <article class="country-card"><span class="country-card__name">Guinea-Bissau</span><span class="country-card__code">GNB</span></article>
+      <article class="country-card"><span class="country-card__name">Liberia</span><span class="country-card__code">LBR</span></article>
+      <article class="country-card"><span class="country-card__name">Mali</span><span class="country-card__code">MLI</span></article>
+      <article class="country-card"><span class="country-card__name">Niger</span><span class="country-card__code">NER</span></article>
+      <article class="country-card"><span class="country-card__name">Nigeria</span><span class="country-card__code">NGA</span></article>
+      <article class="country-card"><span class="country-card__name">Senegal</span><span class="country-card__code">SEN</span></article>
+      <article class="country-card"><span class="country-card__name">Sierra Leone</span><span class="country-card__code">SLE</span></article>
+      <article class="country-card"><span class="country-card__name">Togo</span><span class="country-card__code">TGO</span></article>
+    </div>
+  </div>
+
+  <!-- Interactive ECOWAS map -->
+  <section class="section" id="ecowas-map" aria-label="Map of ECOWAS member states">
+    <div class="container">
+      <header style="margin-bottom: 2rem; max-width: 720px;">
+        <span class="hero-tag" style="display: block; margin-bottom: 0.75rem;">Phase 01 in detail</span>
+        <h2 style="max-width: 22ch;">Fifteen states. One region.</h2>
+        <p style="max-width: 60ch; color: var(--color-text-muted); margin-top: 1.25rem;">The Economic Community of West African States, our starting region. Hover any country for its name.</p>
+      </header>
+
+      <div class="ecowas-map-wrap">
+        <svg class="ecowas-map" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of the 15 ECOWAS member states">
+          <title>ECOWAS member states</title>
+
+          <!-- Mali -->
+          <g class="country" tabindex="0">
+            <title>Mali (MLI)</title>
+            <path d="M 50 0 L 410 0 L 410 250 L 380 320 L 260 360 L 175 380 L 110 360 L 50 230 Z"/>
+            <text x="220" y="200">MLI</text>
+          </g>
+
+          <!-- Niger -->
+          <g class="country" tabindex="0">
+            <title>Niger (NER)</title>
+            <path d="M 410 0 L 720 0 L 720 320 L 650 340 L 520 380 L 460 360 L 425 320 L 410 250 Z"/>
+            <text x="555" y="190">NER</text>
+          </g>
+
+          <!-- Senegal -->
+          <g class="country" tabindex="0">
+            <title>Senegal (SEN)</title>
+            <path d="M 0 245 L 110 240 L 165 285 L 170 330 L 110 365 L 50 365 L 0 350 Z"/>
+            <text x="80" y="305">SEN</text>
+          </g>
+
+          <!-- Gambia -->
+          <g class="country" tabindex="0">
+            <title>The Gambia (GMB)</title>
+            <path d="M 15 318 L 95 316 L 95 335 L 15 338 Z"/>
+            <text x="55" y="328" style="font-size: 8px;">GMB</text>
+          </g>
+
+          <!-- Guinea-Bissau -->
+          <g class="country" tabindex="0">
+            <title>Guinea-Bissau (GNB)</title>
+            <path d="M 0 365 L 100 370 L 115 405 L 0 410 Z"/>
+            <text x="55" y="390" style="font-size: 8px;">GNB</text>
+          </g>
+
+          <!-- Guinea -->
+          <g class="country" tabindex="0">
+            <title>Guinea (GIN)</title>
+            <path d="M 0 410 L 175 390 L 245 430 L 235 480 L 130 495 L 55 460 L 0 445 Z"/>
+            <text x="115" y="450">GIN</text>
+          </g>
+
+          <!-- Sierra Leone -->
+          <g class="country" tabindex="0">
+            <title>Sierra Leone (SLE)</title>
+            <path d="M 95 480 L 175 480 L 180 525 L 115 540 L 95 510 Z"/>
+            <text x="135" y="510" style="font-size: 9px;">SLE</text>
+          </g>
+
+          <!-- Liberia -->
+          <g class="country" tabindex="0">
+            <title>Liberia (LBR)</title>
+            <path d="M 180 510 L 245 495 L 305 555 L 200 570 L 175 540 Z"/>
+            <text x="232" y="540" style="font-size: 9px;">LBR</text>
+          </g>
+
+          <!-- Côte d'Ivoire -->
+          <g class="country" tabindex="0">
+            <title>C&#244;te d&#8217;Ivoire (CIV)</title>
+            <path d="M 225 405 L 380 385 L 390 530 L 315 555 L 245 495 L 235 445 Z"/>
+            <text x="305" y="475">CIV</text>
+          </g>
+
+          <!-- Burkina Faso -->
+          <g class="country" tabindex="0">
+            <title>Burkina Faso (BFA)</title>
+            <path d="M 260 360 L 410 320 L 460 360 L 445 410 L 380 425 L 305 410 L 270 395 Z"/>
+            <text x="365" y="380">BFA</text>
+          </g>
+
+          <!-- Ghana -->
+          <g class="country" tabindex="0">
+            <title>Ghana (GHA)</title>
+            <path d="M 390 425 L 445 410 L 445 540 L 400 555 L 390 460 Z"/>
+            <text x="420" y="490">GHA</text>
+          </g>
+
+          <!-- Togo -->
+          <g class="country" tabindex="0">
+            <title>Togo (TGO)</title>
+            <path d="M 445 410 L 475 405 L 480 550 L 460 555 L 445 460 Z"/>
+            <text x="462" y="485" style="font-size: 9px;">TGO</text>
+          </g>
+
+          <!-- Benin -->
+          <g class="country" tabindex="0">
+            <title>Benin (BEN)</title>
+            <path d="M 475 405 L 510 380 L 525 540 L 480 550 Z"/>
+            <text x="500" y="475" style="font-size: 9px;">BEN</text>
+          </g>
+
+          <!-- Nigeria -->
+          <g class="country" tabindex="0">
+            <title>Nigeria (NGA)</title>
+            <path d="M 510 380 L 720 340 L 720 540 L 585 560 L 530 555 L 525 480 L 510 410 Z"/>
+            <text x="615" y="465">NGA</text>
+          </g>
+
+          <!-- Cape Verde inset (off-coast islands, shown as small island cluster upper-left) -->
+          <g class="ecowas-map__inset country" tabindex="0">
+            <title>Cape Verde (CPV)</title>
+            <rect x="10" y="60" width="120" height="100" rx="2"/>
+            <text x="70" y="80" style="font-size: 8px; letter-spacing: 0.12em;">CPV</text>
+            <circle cx="35" cy="105" r="3"/>
+            <circle cx="50" cy="115" r="3.5"/>
+            <circle cx="65" cy="100" r="2.5"/>
+            <circle cx="80" cy="110" r="3"/>
+            <circle cx="95" cy="125" r="4"/>
+            <circle cx="55" cy="135" r="2.5"/>
+            <circle cx="75" cy="140" r="2"/>
+            <text x="70" y="155" style="font-size: 7px;">~600km offshore</text>
+          </g>
+        </svg>
+
+        <p class="ecowas-map__caption">Map is a stylised representation of ECOWAS member-state geography &mdash; for navigation, not cartography.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Partners -->
   <section class="section" id="partners">
     <div class="container">

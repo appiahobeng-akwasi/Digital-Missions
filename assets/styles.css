@@ -1085,6 +1085,204 @@ main { flex: 1; }
 }
 
 /* ============================================================
+   ECOWAS country flywheel (horizontal auto-scrolling marquee)
+   ============================================================ */
+
+.country-flywheel {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  border-block: 1px solid var(--color-border);
+  padding-block: 1.25rem;
+  background: var(--color-bg);
+}
+
+.country-flywheel::before,
+.country-flywheel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.country-flywheel::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+.country-flywheel::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+.country-flywheel__track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: flywheel-scroll 60s linear infinite;
+}
+
+.country-flywheel:hover .country-flywheel__track {
+  animation-play-state: paused;
+}
+
+@keyframes flywheel-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.country-card {
+  flex-shrink: 0;
+  min-width: 160px;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  cursor: default;
+}
+
+.country-card:hover {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.country-card__name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.15;
+  color: var(--color-text);
+  transition: color 140ms ease;
+}
+
+.country-card:hover .country-card__name {
+  color: var(--color-bg);
+}
+
+.country-card__code {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  transition: color 140ms ease, opacity 140ms ease;
+}
+
+.country-card:hover .country-card__code {
+  color: var(--color-bg);
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .country-flywheel__track {
+    animation: none;
+  }
+  .country-flywheel {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+}
+
+/* ============================================================
+   ECOWAS interactive map (pure SVG, hover-to-highlight)
+   ============================================================ */
+
+.ecowas-map-wrap {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ecowas-map {
+  width: 100%;
+  height: auto;
+  max-width: 760px;
+  margin: 0 auto;
+  display: block;
+  font-family: var(--font-mono);
+}
+
+.ecowas-map .country path {
+  fill: var(--color-hero-bg);
+  stroke: var(--color-border-strong);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+  transition: fill 160ms ease, stroke 160ms ease;
+}
+
+.ecowas-map .country:hover path,
+.ecowas-map .country:focus path {
+  fill: var(--color-text);
+  stroke: var(--color-text);
+}
+
+.ecowas-map .country text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  fill: var(--color-text-muted);
+  text-anchor: middle;
+  pointer-events: none;
+  user-select: none;
+  transition: fill 160ms ease;
+  dominant-baseline: middle;
+}
+
+.ecowas-map .country:hover text,
+.ecowas-map .country:focus text {
+  fill: var(--color-bg);
+}
+
+.ecowas-map .country {
+  cursor: default;
+  outline: none;
+}
+
+.ecowas-map__caption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+.ecowas-map__inset rect {
+  fill: var(--color-hero-bg);
+  stroke: var(--color-border-strong);
+  stroke-width: 0.8;
+}
+
+.ecowas-map__inset circle {
+  fill: var(--color-hero-bg);
+  stroke: var(--color-border-strong);
+  stroke-width: 0.6;
+  transition: fill 160ms ease;
+}
+
+.ecowas-map__inset:hover circle,
+.ecowas-map__inset:focus circle {
+  fill: var(--color-text);
+}
+
+.ecowas-map__inset text {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  fill: var(--color-text-muted);
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* ============================================================
    Stats block — Tresmares-style raw numbers + mono labels
    ============================================================ */
 
