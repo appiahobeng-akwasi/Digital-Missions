@@ -7,7 +7,7 @@ Live: <https://digitalmissions.technology>
 ## Stack
 
 - Hand-written HTML5 + CSS3
-- Three Google Fonts: **Plus Jakarta Sans**, **Newsreader**, **JetBrains Mono**
+- One Google Font: **Archivo** (grotesque, Akzidenz lineage) — single typeface across display, body, and labels
 - No JavaScript, no build step
 - Static deployment on Vercel
 
