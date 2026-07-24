@@ -2551,3 +2551,8 @@ h1, h2, h3, h4,
     margin: 0;
   }
 }
+
+/* Plates: text and dots never inherit the root stroke */
+.plate text {
+  stroke: none;
+}
