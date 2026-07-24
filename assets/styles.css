@@ -2435,3 +2435,119 @@ h1, h2, h3, h4,
 .sub-nav-inner {
   justify-content: flex-start;
 }
+
+/* ==========================================================================
+   TECHNICAL PLATES
+   Concepts drawn as engineering documentation — wireframe, schematic,
+   thin uniform strokes, one functional green element per plate at most.
+   The visual language of people who build infrastructure.
+   ========================================================================== */
+
+.plate {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--color-border-strong);
+}
+
+.plate-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.plate-line--strong {
+  stroke: var(--color-text-muted);
+}
+
+.plate-node {
+  fill: var(--color-bg);
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.plate-dot {
+  fill: var(--color-text);
+  stroke: none;
+}
+
+.plate-dot--accent {
+  fill: var(--color-accent);
+  stroke: none;
+}
+
+.plate-text {
+  fill: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-anchor: middle;
+}
+
+.plate-text--center {
+  fill: var(--color-text);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+/* Hero plate — two-column hero at desktop, Renaissance-style */
+.hero-plate {
+  width: min(320px, 100%);
+  margin-top: 2rem;
+}
+
+@media (min-width: 1100px) {
+  .hero-soft .container {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    column-gap: 5rem;
+    align-items: center;
+  }
+  .hero-soft .hero-tag,
+  .hero-soft h1,
+  .hero-soft .hero-summary,
+  .hero-soft .hero-actions {
+    grid-column: 1;
+  }
+  .hero-plate {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    width: 100%;
+    margin: 0;
+    justify-self: end;
+  }
+}
+
+/* Pillar plates — what-we-do verbs, text left / drawing right */
+.pillar--plated {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.pillar--plated .pillar-plate {
+  width: min(200px, 60%);
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 880px) {
+  .pillar--plated {
+    grid-template-columns: minmax(0, 1fr) 220px;
+    column-gap: 4rem;
+  }
+  .pillar--plated .pillar-header,
+  .pillar--plated .pillar-intro {
+    grid-column: 1;
+  }
+  .pillar--plated .pillar-plate {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+    width: 100%;
+    margin: 0;
+  }
+}
