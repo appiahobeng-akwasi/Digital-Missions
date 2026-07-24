@@ -2556,3 +2556,23 @@ h1, h2, h3, h4,
 .plate text {
   stroke: none;
 }
+
+/* Red-line glyphs — the thing refused, struck through on the drawing board */
+.summary-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.redline-glyph {
+  width: 52px;
+  height: auto;
+  flex-shrink: 0;
+  color: var(--color-border-strong);
+  margin-top: -0.25rem;
+}
+
+.redline-glyph .glyph-strike {
+  stroke: var(--color-text-muted);
+}
