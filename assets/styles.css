@@ -2576,3 +2576,19 @@ h1, h2, h3, h4,
 .redline-glyph .glyph-strike {
   stroke: var(--color-text-muted);
 }
+
+/* Small glyphs — generic head-row placement (index left, drawing right) */
+.glyph-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.glyph-sm {
+  width: 44px;
+  height: auto;
+  flex-shrink: 0;
+  color: var(--color-border-strong);
+  margin-top: -0.15rem;
+}
