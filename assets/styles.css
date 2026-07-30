@@ -2592,3 +2592,80 @@ h1, h2, h3, h4,
   color: var(--color-border-strong);
   margin-top: -0.15rem;
 }
+
+/* ==========================================================================
+   TUCKED TEXT
+   Secondary copy folds behind quiet native disclosures. Titles carry the
+   scan; detail is one click away. No JavaScript.
+   ========================================================================== */
+
+details.more {
+  margin-top: 0.25rem;
+}
+
+details.more > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  padding: 0.2rem 0;
+  user-select: none;
+}
+
+details.more > summary::-webkit-details-marker { display: none; }
+details.more > summary::marker { content: ''; }
+
+details.more > summary::before {
+  content: '+';
+  font-size: 1rem;
+  line-height: 1;
+}
+
+details.more[open] > summary::before { content: '\2212'; }
+
+details.more > summary .more-label::after { content: 'Details'; }
+details.more[open] > summary .more-label::after { content: 'Less'; }
+
+details.more > :not(summary) { margin-top: 0.6rem; }
+
+/* Funders: the whole row is a disclosure — name visible, programs tucked */
+.funder-grid details.funder-row {
+  display: block;
+}
+
+details.funder-row > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  user-select: none;
+}
+
+details.funder-row > summary::-webkit-details-marker { display: none; }
+details.funder-row > summary::marker { content: ''; }
+
+details.funder-row .funder-row__toggle {
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+details.funder-row .funder-row__toggle::before { content: '+'; }
+details.funder-row[open] .funder-row__toggle::before { content: '\2212'; }
+
+details.funder-row > summary:hover .funder-row__name {
+  color: var(--color-accent);
+}
+
+details.funder-row > .funder-row__programs {
+  margin-top: 0.85rem;
+  max-width: 60ch;
+}
