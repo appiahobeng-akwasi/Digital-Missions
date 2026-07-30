@@ -9,21 +9,21 @@
 /* ----------------------------------------------------------------- Tokens */
 
 :root {
-  /* Neutral instrument grays — Braun housing, not editorial cream */
-  --color-bg:              #F4F4F2;
-  --color-hero-bg:         #E9E9E6;
-  --color-dark-bg:         #E9E9E6;   /* dark blocks flattened to panels */
-  --color-dark-text:       #1C1C1C;
-  --color-dark-muted:      #55554F;
-  --color-text:            #1C1C1C;
-  --color-text-muted:      #55554F;
-  /* The single functional accent — the Braun power-dot green.
+  /* Cool instrument grays — the field carries a calm blue undertone */
+  --color-bg:              #F2F4F5;
+  --color-hero-bg:         #E8EBED;
+  --color-dark-bg:         #21303C;   /* statement panels: deep calm slate-navy */
+  --color-dark-text:       #EEF2F4;
+  --color-dark-muted:      #93A3AD;
+  --color-text:            #1B1E20;
+  --color-text-muted:      #545B60;
+  /* The single functional accent — calm steel blue.
      Used ONLY for: current state, primary action, live status, focus. */
-  --color-accent:          #087443;
-  --color-accent-hover:    #065C35;
-  --color-border:          #DCDCD7;
-  --color-border-strong:   #B9B9B3;
-  --color-selection-bg:    #087443;
+  --color-accent:          #33608C;
+  --color-accent-hover:    #274B6E;
+  --color-border:          #D9DDE0;
+  --color-border-strong:   #B7BEC3;
+  --color-selection-bg:    #33608C;
   --color-selection-text:  #FFFFFF;
 
   /* One typeface. Grotesque, in the Akzidenz lineage. */
@@ -2314,10 +2314,10 @@ a.post-row__title:hover {
   content: '';
 }
 
-/* --- 3. Panels, not drama ---------------------------------------------- */
+/* --- 3. Statement panels — deep calm slate-navy ------------------------- */
 
 .dark-block {
-  border-block: 1px solid var(--color-border);
+  border-block: 0;
   padding-block: clamp(3rem, 5vw, 4.5rem);
 }
 
@@ -2366,14 +2366,14 @@ a.post-row__title:hover {
 }
 
 .btn--inverse {
-  border-color: var(--color-border-strong);
-  color: var(--color-text);
+  border-color: var(--color-dark-muted);
+  color: var(--color-dark-text);
 }
 
 .btn--inverse:hover {
   background: transparent;
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+  border-color: var(--color-dark-text);
+  color: var(--color-dark-text);
 }
 
 details.read-more > summary {
