@@ -2947,3 +2947,329 @@ details.funder-row > .funder-row__programs {
   .plate .fx { display: none !important; }
   .motion * { opacity: 1 !important; transform: none !important; visibility: visible !important; }
 }
+
+/* ==========================================================================
+   MOTION, FULL THROTTLE
+   Title card, page cuts, breathing dot fields, glyph loops, cursor-aware
+   plates and cards. Same contract as above: nothing here applies without
+   html.motion, and html.motion-paused holds everything still.
+   ========================================================================== */
+
+/* --- Title card: the first page of a visit opens like a film leader ----- */
+
+html.intro body { overflow: hidden; }
+html.intro body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--color-bg);
+}
+
+.dm-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: grid;
+  place-content: center;
+  justify-items: start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--color-bg);
+  clip-path: inset(0 0 0 0);
+  transition: clip-path .7s cubic-bezier(.7, 0, .2, 1);
+}
+.dm-intro.is-out { clip-path: inset(0 0 100% 0); }
+.dm-intro__mark {
+  font-size: clamp(1.75rem, 3vw + 1rem, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  min-width: 12ch;
+}
+.dm-intro__line {
+  width: min(360px, 70vw);
+  height: 1px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .9s var(--ease-out) .15s;
+}
+.dm-intro.is-in .dm-intro__line { transform: scaleX(1); }
+.dm-intro__meta,
+.dm-intro__tag {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.dm-intro__tag { opacity: 0; transition: opacity .6s ease .45s; }
+.dm-intro.is-in .dm-intro__tag { opacity: 1; }
+
+/* --- Page cuts: one page wipes into the next ---------------------------- */
+
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: dm-header; }
+::view-transition-old(root) { animation: dm-cut-out .42s cubic-bezier(.7, 0, .84, 0) both; }
+::view-transition-new(root) { animation: dm-cut-in .62s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes dm-cut-out { to { opacity: 0; transform: translateY(-14px); } }
+@keyframes dm-cut-in { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+html.motion-paused::view-transition-old(root),
+html.motion-paused::view-transition-new(root) { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
+
+/* --- Dot fields behind the dark panels, the hero, and the footer -------- */
+
+.dm-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.dm-field.is-on { opacity: 1; }
+.dark-block > .container,
+.big-wordmark > .container { position: relative; z-index: 1; }
+.motion .hero-soft { position: relative; }
+.motion .hero-soft > .container { position: relative; z-index: 1; }
+.big-wordmark { position: relative; overflow: hidden; }
+
+/* --- Glyph loops --------------------------------------------------------- */
+
+.motion-paused .plate:not([data-loop]) .fx { opacity: 0; }
+
+/* --- Cards: a soft light follows the cursor ----------------------------- */
+
+@media (pointer: fine) {
+  .motion [data-reveal] {
+    background-image: radial-gradient(280px circle at var(--mx, -400px) var(--my, -400px),
+      color-mix(in srgb, var(--color-accent) 9%, transparent), transparent 70%);
+  }
+  .motion [data-reveal]:hover {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+  .motion-paused [data-reveal] { background-image: none; }
+}
+
+/* --- Plates lean toward the pointer; a crosshair reads out coordinates --- */
+
+.motion figure.scene[data-tilt] {
+  transition: transform .5s var(--ease-out), translate .2s linear;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.dm-cross { pointer-events: none; opacity: 0; transition: opacity .2s ease; }
+.dm-cross.is-on { opacity: 1; }
+.dm-cross line {
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  vector-effect: non-scaling-stroke;
+  opacity: .55;
+}
+.dm-cross text {
+  fill: var(--color-accent);
+  stroke: none;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  font-variant-numeric: tabular-nums;
+}
+.motion-paused .dm-cross { display: none; }
+
+/* --- Buttons lean toward the pointer ------------------------------------ */
+
+.motion .btn {
+  transition: transform .45s var(--ease-out), background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+/* --- Live indicator on the active phase --------------------------------- */
+
+.dm-live {
+  position: relative;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: .5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  vertical-align: .1em;
+}
+.dm-live::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  animation: pulse-ring 2s ease-out infinite;
+}
+.motion-paused .dm-live::after { animation-play-state: paused; opacity: 0; }
+
+/* --- Numbers: an underline draws once the odometer lands ----------------- */
+
+.motion .stat .stat__num {
+  padding-bottom: .35rem;
+  background: linear-gradient(var(--color-accent), var(--color-accent)) no-repeat left bottom / 0 1px;
+}
+.motion .stat.is-in .stat__num {
+  background-size: 2.25rem 1px;
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out), background-size 1.1s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms), calc(var(--i, 0) * 70ms), calc(1.4s + var(--i, 0) * 120ms);
+}
+
+/* --- Map: countries draw their borders, then the network wakes ---------- */
+
+.motion .ecowas-map:not(.is-drawn) .country { opacity: 0; }
+.ecowas-map .fx { display: none; }
+.motion .ecowas-map .fx { display: inline; opacity: 0; transition: opacity .8s ease; pointer-events: none; }
+.motion .ecowas-map.is-live .fx { opacity: 1; }
+
+/* --- Footer switch: motion on or off, remembered ------------------------ */
+
+.motion-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.motion-switch:hover { color: var(--color-accent); }
+.motion-switch:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.motion-switch__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.motion-paused .motion-switch__dot { background: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+.motion-switch { display: none; }
+.motion .motion-switch { display: inline-flex; }
+
+@media print {
+  .dm-intro, .dm-field, .dm-cross { display: none !important; }
+}
+
+
+/* ==========================================================================
+   MOTION SCENES
+   Classes introduced by individual films, scoped to their own drawing
+   ([data-scene]) so no rule can reach another plate.
+   ========================================================================== */
+
+/* hero-how-we-work */
+[data-scene="hero-how-we-work"] .fx-link { fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  vector-effect: non-scaling-stroke; }
+[data-scene="hero-how-we-work"] .fx-label { fill: var(--color-text); stroke: none; }
+
+/* hero-our-red-lines */
+[data-scene="hero-our-red-lines"] .fx-tread { fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 4;
+  stroke-dasharray: 1.5 10.5; }
+[data-scene="hero-our-red-lines"] .fx-hi--accent { stroke: var(--color-accent); }
+
+/* hero-where-we-operate */
+[data-scene="hero-where-we-operate"] .plate-dot--soft { fill: var(--color-border-strong); stroke: none; }
+[data-scene="hero-where-we-operate"] .plate-text--start { text-anchor: start; }
+[data-scene="hero-where-we-operate"] .fx-text { fill: var(--color-text); stroke: none; }
+[data-scene="hero-where-we-operate"] .fx-dots { fill: none; stroke: var(--color-text); stroke-width: 5.2; stroke-linecap: round; }
+[data-scene="hero-where-we-operate"] .fx-dots--accent { stroke: var(--color-accent); stroke-width: 7.4; }
+[data-scene="hero-where-we-operate"] .fx-route { fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+  vector-effect: non-scaling-stroke; }
+
+/* hero-contact */
+[data-scene="hero-contact"] .fx-label { fill: var(--color-text); stroke: none; }
+
+/* hero-reasoning */
+[data-scene="hero-reasoning"] .fx-trace { fill: none;
+  stroke: var(--color-text);
+  stroke-width: 1.25;
+  stroke-linecap: butt;
+  stroke-linejoin: round; }
+[data-scene="hero-reasoning"] .fx-trace--soft { stroke: var(--color-text-muted); }
+[data-scene="hero-reasoning"] .fx-label { fill: var(--color-text); }
+
+/* amp-funders */
+[data-scene="amp-funders"] .fx-flow { fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+  vector-effect: non-scaling-stroke; }
+[data-scene="amp-funders"] .fx-flow--soft { stroke: var(--color-border-strong); stroke-dasharray: 4 4; }
+[data-scene="amp-funders"] .fx-cell { fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke; }
+[data-scene="amp-funders"] .fx-cell--on { fill: var(--color-text); fill-opacity: .12; stroke: var(--color-text-muted); }
+[data-scene="amp-funders"] .fx-cell--active { fill: var(--color-text-muted); fill-opacity: 1; stroke: none; }
+[data-scene="amp-funders"] .fx-spark { stroke: var(--color-text-muted);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke; }
+[data-scene="amp-funders"] .fx-doc { fill: var(--color-bg);
+  stroke: var(--color-text);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke; }
+
+/* amp-build */
+[data-scene="amp-build"] .fx-mask { fill: var(--color-bg); stroke: none; }
+[data-scene="amp-build"] .fx-tag { font-size: 16px; text-anchor: end; }
+
+/* glyphs-redlines */
+[data-scene="glyphs-redlines"] .fx-mask { fill: var(--color-bg); stroke: none; }
+[data-scene="glyphs-redlines"] .fx-slash { fill: none; stroke: var(--color-text); stroke-width: 1.5; stroke-linecap: round; }
+
+/* map-network */
+/* Map: the data-exchange network over the 12 ECOWAS capitals (fx layer, motion only) */
+.ecowas-map .fx { display: none; pointer-events: none; }
+.motion .ecowas-map .fx { display: inline; }
+.ecowas-map .fx * { pointer-events: none; }
+.ecowas-map .fx-link {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  stroke-opacity: .7;
+  vector-effect: non-scaling-stroke;
+}
+.ecowas-map .fx-trace {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.ecowas-map .fx-node {
+  fill: var(--color-bg);
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.ecowas-map .fx-dot { fill: var(--color-text); stroke: none; }
+.ecowas-map .fx-route {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  vector-effect: non-scaling-stroke;
+}

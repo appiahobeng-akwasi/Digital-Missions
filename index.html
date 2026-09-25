@@ -15,9 +15,9 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/styles.css?v=20260925.1">
-  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion')}},2500)}}catch(e){}})(document.documentElement);</script>
-  <script src="assets/motion.js?v=20260925.1" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20260926.3">
+  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');var p=null,s=null;try{p=localStorage.getItem('dm-motion');s=sessionStorage.getItem('dm-intro')}catch(e){}if(p==='paused'){d.classList.add('motion-paused')}else if(!s&&!location.hash){d.classList.add('intro')}setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion','intro')}},2500)}}catch(e){}})(document.documentElement);</script>
+  <script src="assets/motion.js?v=20260926.3" defer></script>
 </head>
 <body>
 
@@ -76,7 +76,7 @@
         <a class="btn" href="contact.html">Contact us</a>
       </div>
 
-      <svg class="plate hero-plate" data-loop="12" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of the mission system: a mission connects the partner ministry, the mission team, and the donor or funder.">
+      <svg data-scene="amp-home" class="plate hero-plate" data-loop="12" data-still="5.3" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of the mission system: a mission connects the partner ministry, the mission team, and the donor or funder.">
         <title>The mission system</title>
         <!-- Outer system boundary -->
         <circle class="plate-line" cx="240" cy="210" r="150"/>
@@ -97,18 +97,133 @@
         <circle class="plate-dot" fill="currentColor" stroke="none" cx="369.9" cy="285" r="3"/>
         <text class="plate-text" fill="currentColor" stroke="none" x="370" y="334">Donor / funder</text>
         <g class="fx" aria-hidden="true">
+          <!-- Radar: a sweep on the system boundary, clockwise, one turn per loop -->
+          <g>
+            <animateTransform attributeName="transform" type="rotate" values="-72 240 210;288 240 210" dur="12s" repeatCount="indefinite"/>
+            <path class="fx-wedge" d="M373.49,198.32 A134,134 0 0 1 374,210 L320,210 A80,80 0 0 0 319.7,203.03 Z"/>
+            <path class="fx-wedge" d="M371.96,186.73 A134,134 0 0 1 373.49,198.32 L319.7,203.03 A80,80 0 0 0 318.78,196.11 Z" opacity="0.81"/>
+            <path class="fx-wedge" d="M369.43,175.32 A134,134 0 0 1 371.96,186.73 L318.78,196.11 A80,80 0 0 0 317.27,189.29 Z" opacity="0.63"/>
+            <path class="fx-wedge" d="M365.92,164.17 A134,134 0 0 1 369.43,175.32 L317.27,189.29 A80,80 0 0 0 315.18,182.64 Z" opacity="0.47"/>
+            <path class="fx-wedge" d="M361.45,153.37 A134,134 0 0 1 365.92,164.17 L315.18,182.64 A80,80 0 0 0 312.5,176.19 Z" opacity="0.33"/>
+            <path class="fx-wedge" d="M356.05,143 A134,134 0 0 1 361.45,153.37 L312.5,176.19 A80,80 0 0 0 309.28,170 Z" opacity="0.21"/>
+            <path class="fx-wedge" d="M349.77,133.14 A134,134 0 0 1 356.05,143 L309.28,170 A80,80 0 0 0 305.53,164.11 Z" opacity="0.11"/>
+            <path class="fx-wedge" d="M342.65,123.87 A134,134 0 0 1 349.77,133.14 L305.53,164.11 A80,80 0 0 0 301.28,158.58 Z" opacity="0.04"/>
+            <path class="fx-hi" d="M388.88,191.72 A150,150 0 0 1 390,210"/>
+            <path class="fx-hi" d="M385.54,173.71 A150,150 0 0 1 388.88,191.72" opacity="0.79"/>
+            <path class="fx-hi" d="M380.04,156.24 A150,150 0 0 1 385.54,173.71" opacity="0.6"/>
+            <path class="fx-hi" d="M372.44,139.58 A150,150 0 0 1 380.04,156.24" opacity="0.43"/>
+            <path class="fx-hi" d="M362.87,123.96 A150,150 0 0 1 372.44,139.58" opacity="0.29"/>
+            <path class="fx-hi" d="M351.47,109.63 A150,150 0 0 1 362.87,123.96" opacity="0.17"/>
+            <path class="fx-hi" d="M338.41,96.79 A150,150 0 0 1 351.47,109.63" opacity="0.08"/>
+            <path class="fx-hi" d="M323.88,85.64 A150,150 0 0 1 338.41,96.79" opacity="0.02"/>
+            <line class="fx-sweep" x1="320" y1="210" x2="374" y2="210" opacity="0.55"/>
+            <circle class="fx-packet fx-packet--soft" cx="390" cy="210" r="2.4" opacity="1">
+              <animate attributeName="opacity" values="1;1;0;0;1;1;0;0;1;1" keyTimes="0;0.325;0.335;0.3717;0.3817;0.525;0.535;0.5717;0.5817;1" dur="12s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+            </circle>
+          </g>
+          <!-- The boundary redrawn where it runs by the lower labels, so the sweep passes beneath them -->
+          <path class="plate-line" d="M347.9,314.2 A150,150 0 0 1 305.76,344.82 M174.24,344.82 A150,150 0 0 1 132.1,314.2"/>
+          <!-- Trails behind the relay packets on the triangle, one per edge per beat -->
+          <line class="fx-sweep" x1="240" y1="60" x2="240" y2="60">
+            <animate attributeName="x1" values="240;240;110.1;110.1" keyTimes="0;0.1375;0.93;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="x2" values="240;110.1;110.1" keyTimes="0;0.85;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="y1" values="60;60;285;285" keyTimes="0;0.1375;0.93;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="y2" values="60;285;285" keyTimes="0;0.85;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;0 0 1 1"/>
+          </line>
+          <line class="fx-sweep" x1="110.1" y1="285" x2="110.1" y2="285">
+            <animate attributeName="x1" values="110.1;110.1;369.9;369.9" keyTimes="0;0.1375;0.93;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="x2" values="110.1;369.9;369.9" keyTimes="0;0.85;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;0 0 1 1"/>
+          </line>
+          <line class="fx-sweep" x1="369.9" y1="285" x2="369.9" y2="285">
+            <animate attributeName="x1" values="369.9;369.9;240;240" keyTimes="0;0.1375;0.93;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="x2" values="369.9;240;240" keyTimes="0;0.85;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="y1" values="285;285;60;60" keyTimes="0;0.1375;0.93;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="y2" values="285;60;60" keyTimes="0;0.85;1" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;0 0 1 1"/>
+          </line>
+          <!-- Spokes: each party to the mission hub -->
+          <line class="fx-soft" x1="240" y1="148" x2="240" y2="60"/>
+          <line class="fx-soft" x1="293.69" y1="241" x2="369.9" y2="285"/>
+          <line class="fx-soft" x1="186.31" y1="241" x2="110.1" y2="285"/>
+          <g>
+            <animateTransform attributeName="transform" type="rotate" calcMode="discrete" values="0 240 210;120 240 210;240 240 210" dur="12s" begin="-9.5s" repeatCount="indefinite"/>
+            <line class="fx-hi" x1="369.9" y1="285" x2="369.9" y2="285">
+              <animate attributeName="x1" values="369.9;369.9;293.69;293.69" keyTimes="0;0.32;0.455;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="x2" values="369.9;369.9;293.69;293.69" keyTimes="0;0.25;0.4;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="y1" values="285;285;241;241" keyTimes="0;0.32;0.455;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="y2" values="285;285;241;241" keyTimes="0;0.25;0.4;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            </line>
+            <line class="fx-hi" x1="186.31" y1="241" x2="186.31" y2="241">
+              <animate attributeName="x1" values="186.31;186.31;110.1;110.1" keyTimes="0;0.7075;0.8425;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="x2" values="186.31;186.31;110.1;110.1" keyTimes="0;0.6375;0.7875;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="y1" values="241;241;285;285" keyTimes="0;0.7075;0.8425;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="y2" values="241;241;285;285" keyTimes="0;0.6375;0.7875;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            </line>
+            <line class="fx-hi" x1="240" y1="148" x2="240" y2="148">
+              <animate attributeName="y1" values="148;148;60;60" keyTimes="0;0.7075;0.8425;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="y2" values="148;148;60;60" keyTimes="0;0.6375;0.7875;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            </line>
+          </g>
+          <!-- Party nodes redrawn so the sweep and trails pass beneath them -->
+          <circle class="plate-node" cx="240" cy="60" r="24"/>
+          <circle class="plate-dot" fill="currentColor" stroke="none" cx="240" cy="60" r="3"/>
+          <circle class="plate-node" cx="110.1" cy="285" r="24"/>
+          <circle class="plate-dot" fill="currentColor" stroke="none" cx="110.1" cy="285" r="3"/>
+          <circle class="plate-node" cx="369.9" cy="285" r="24"/>
+          <circle class="plate-dot" fill="currentColor" stroke="none" cx="369.9" cy="285" r="3"/>
+          <!-- The mission hub: a dashed ring turning slowly against the sweep -->
+          <g>
+            <animateTransform attributeName="transform" type="rotate" values="0 240 210;-60 240 210" dur="12s" repeatCount="indefinite"/>
+            <path class="plate-line" d="M301.98,208.38 A62,62 0 0 1 301.98,211.62 M301.32,219.16 A62,62 0 0 1 300.76,222.36 M298.8,229.67 A62,62 0 0 1 297.69,232.72 M294.49,239.58 A62,62 0 0 1 292.86,242.39 M288.52,248.6 A62,62 0 0 1 286.44,251.08 M281.08,256.44 A62,62 0 0 1 278.6,258.52 M272.39,262.86 A62,62 0 0 1 269.58,264.49 M262.72,267.69 A62,62 0 0 1 259.67,268.8 M252.36,270.76 A62,62 0 0 1 249.16,271.32 M241.62,271.98 A62,62 0 0 1 238.38,271.98 M230.84,271.32 A62,62 0 0 1 227.64,270.76 M220.33,268.8 A62,62 0 0 1 217.28,267.69 M210.42,264.49 A62,62 0 0 1 207.61,262.86 M201.4,258.52 A62,62 0 0 1 198.92,256.44 M193.56,251.08 A62,62 0 0 1 191.48,248.6 M187.14,242.39 A62,62 0 0 1 185.51,239.58 M182.31,232.72 A62,62 0 0 1 181.2,229.67 M179.24,222.36 A62,62 0 0 1 178.68,219.16 M178.02,211.62 A62,62 0 0 1 178.02,208.38 M178.68,200.84 A62,62 0 0 1 179.24,197.64 M181.2,190.33 A62,62 0 0 1 182.31,187.28 M185.51,180.42 A62,62 0 0 1 187.14,177.61 M191.48,171.4 A62,62 0 0 1 193.56,168.92 M198.92,163.56 A62,62 0 0 1 201.4,161.48 M207.61,157.14 A62,62 0 0 1 210.42,155.51 M217.28,152.31 A62,62 0 0 1 220.33,151.2 M227.64,149.24 A62,62 0 0 1 230.84,148.68 M238.38,148.02 A62,62 0 0 1 241.62,148.02 M249.16,148.68 A62,62 0 0 1 252.36,149.24 M259.67,151.2 A62,62 0 0 1 262.72,152.31 M269.58,155.51 A62,62 0 0 1 272.39,157.14 M278.6,161.48 A62,62 0 0 1 281.08,163.56 M286.44,168.92 A62,62 0 0 1 288.52,171.4 M292.86,177.61 A62,62 0 0 1 294.49,180.42 M297.69,187.28 A62,62 0 0 1 298.8,190.33 M300.76,197.64 A62,62 0 0 1 301.32,200.84"/>
+            <path class="fx-hi" d="M301.98,208.38 A62,62 0 0 1 301.98,211.62 M301.32,219.16 A62,62 0 0 1 300.76,222.36 M298.8,229.67 A62,62 0 0 1 297.69,232.72 M294.49,239.58 A62,62 0 0 1 292.86,242.39 M288.52,248.6 A62,62 0 0 1 286.44,251.08 M281.08,256.44 A62,62 0 0 1 278.6,258.52 M272.39,262.86 A62,62 0 0 1 269.58,264.49 M262.72,267.69 A62,62 0 0 1 259.67,268.8 M252.36,270.76 A62,62 0 0 1 249.16,271.32 M241.62,271.98 A62,62 0 0 1 238.38,271.98 M230.84,271.32 A62,62 0 0 1 227.64,270.76 M220.33,268.8 A62,62 0 0 1 217.28,267.69 M210.42,264.49 A62,62 0 0 1 207.61,262.86 M201.4,258.52 A62,62 0 0 1 198.92,256.44 M193.56,251.08 A62,62 0 0 1 191.48,248.6 M187.14,242.39 A62,62 0 0 1 185.51,239.58 M182.31,232.72 A62,62 0 0 1 181.2,229.67 M179.24,222.36 A62,62 0 0 1 178.68,219.16 M178.02,211.62 A62,62 0 0 1 178.02,208.38 M178.68,200.84 A62,62 0 0 1 179.24,197.64 M181.2,190.33 A62,62 0 0 1 182.31,187.28 M185.51,180.42 A62,62 0 0 1 187.14,177.61 M191.48,171.4 A62,62 0 0 1 193.56,168.92 M198.92,163.56 A62,62 0 0 1 201.4,161.48 M207.61,157.14 A62,62 0 0 1 210.42,155.51 M217.28,152.31 A62,62 0 0 1 220.33,151.2 M227.64,149.24 A62,62 0 0 1 230.84,148.68 M238.38,148.02 A62,62 0 0 1 241.62,148.02 M249.16,148.68 A62,62 0 0 1 252.36,149.24 M259.67,151.2 A62,62 0 0 1 262.72,152.31 M269.58,155.51 A62,62 0 0 1 272.39,157.14 M278.6,161.48 A62,62 0 0 1 281.08,163.56 M286.44,168.92 A62,62 0 0 1 288.52,171.4 M292.86,177.61 A62,62 0 0 1 294.49,180.42 M297.69,187.28 A62,62 0 0 1 298.8,190.33 M300.76,197.64 A62,62 0 0 1 301.32,200.84" opacity="0">
+              <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.395;0.415;0.7;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+            </path>
+          </g>
+          <g>
+            <animateTransform attributeName="transform" type="rotate" calcMode="discrete" values="0 240 210;120 240 210;240 240 210" dur="12s" begin="-9.5s" repeatCount="indefinite"/>
+            <g>
+              <animateTransform attributeName="transform" type="rotate" values="30 240 210;30 240 210;150 240 210;150 240 210" keyTimes="0;0.4375;0.6375;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <path class="fx-hi" d="M297.49,186.77 A62,62 0 0 1 302,210" opacity="0">
+                <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4675;0.5125;0.5675;0.6175;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+              </path>
+            </g>
+            <g>
+              <animateTransform attributeName="transform" type="rotate" values="30 240 210;30 240 210;-90 240 210;-90 240 210" keyTimes="0;0.4375;0.6375;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+              <path class="fx-hi" d="M302,210 A62,62 0 0 1 297.49,233.23" opacity="0">
+                <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4675;0.5125;0.5675;0.6175;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+              </path>
+            </g>
+            <circle class="fx-hi fx-hi--fill" cx="369.9" cy="285" r="24" opacity="0">
+              <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.215;0.24;0.4;0.625;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            </circle>
+            <circle class="fx-hi fx-hi--fill" cx="110.1" cy="285" r="24" opacity="0">
+              <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7725;0.7975;0.8625;0.975;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            </circle>
+            <circle class="fx-hi fx-hi--fill" cx="240" cy="60" r="24" opacity="0">
+              <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.7725;0.7975;0.8625;0.975;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            </circle>
+          </g>
+          <circle class="fx-hi" cx="240" cy="210" r="72" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.395;0.415;0.65;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+          </circle>
+          <!-- Ripple: the heartbeat carried outward from the mission rim -->
+          <circle class="fx-soft" cx="240" cy="210" r="72" opacity="0">
+            <animate attributeName="r" values="72;72;112;112" keyTimes="0;0.4;0.775;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.3975;0.4125;0.775;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+          </circle>
+          <!-- Arrival pulses at the three parties (every 4s, on arrival) -->
           <circle class="fx-ring" cx="240" cy="60" r="24" opacity="0">
-            <animate attributeName="r" values="24;42;42" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="24;36;36" keyTimes="0;0.4;1" dur="4s" begin="-0.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="-0.6s" repeatCount="indefinite"/>
           </circle>
           <circle class="fx-ring" cx="110.1" cy="285" r="24" opacity="0">
-            <animate attributeName="r" values="24;42;42" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="24;36;36" keyTimes="0;0.4;1" dur="4s" begin="-0.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="-0.6s" repeatCount="indefinite"/>
           </circle>
           <circle class="fx-ring" cx="369.9" cy="285" r="24" opacity="0">
-            <animate attributeName="r" values="24;42;42" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="24;36;36" keyTimes="0;0.4;1" dur="4s" begin="-0.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="-0.6s" repeatCount="indefinite"/>
           </circle>
+          <!-- Relay packets around the triangle (unchanged) -->
           <circle class="fx-packet" r="3.2">
             <animateMotion dur="12s" begin="0s" repeatCount="indefinite" path="M240,60 L110.1,285 L369.9,285 Z" calcMode="spline" keyPoints="0;0.3333;0.3333;0.6667;0.6667;1;1" keyTimes="0;0.2833;0.3333;0.6167;0.6667;0.95;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
           </circle>
@@ -118,12 +233,26 @@
           <circle class="fx-packet" r="3.2">
             <animateMotion dur="12s" begin="-8s" repeatCount="indefinite" path="M240,60 L110.1,285 L369.9,285 Z" calcMode="spline" keyPoints="0;0.3333;0.3333;0.6667;0.6667;1;1" keyTimes="0;0.2833;0.3333;0.6167;0.6667;0.95;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
           </circle>
+          <!-- Exchange: the swept party sends in; the mission routes it round the hub and out to the other two -->
+          <g>
+            <animateTransform attributeName="transform" type="rotate" calcMode="discrete" values="0 240 210;120 240 210;240 240 210" dur="12s" begin="-9.5s" repeatCount="indefinite"/>
+            <circle class="fx-packet" r="3" opacity="0">
+              <animateMotion dur="4s" begin="-1.5s" repeatCount="indefinite" path="M369.9,285 L293.69,241 A62,62 0 0 1 186.31,241 L110.1,285" calcMode="spline" keyPoints="0;0;0.2877;0.2877;0.7123;1;1" keyTimes="0;0.25;0.4;0.4375;0.6375;0.7875;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.245;0.275;0.7875;0.8225;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+            </circle>
+            <circle class="fx-packet" r="3" opacity="0">
+              <animateMotion dur="4s" begin="-1.5s" repeatCount="indefinite" path="M369.9,285 L293.69,241 A62,62 0 0 0 240,148 L240,60" calcMode="spline" keyPoints="0;0;0.2877;0.2877;0.7123;1;1" keyTimes="0;0.25;0.4;0.4375;0.6375;0.7875;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;.45 0 .55 1;0 0 1 1"/>
+              <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.245;0.275;0.7875;0.8225;1" dur="4s" begin="-1.5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+            </circle>
+          </g>
+          <!-- Mission heartbeat: a double beat as the sent packet reaches the hub -->
           <circle class="fx-ring fx-ring--accent" cx="240" cy="190" r="4" opacity="0">
-            <animate attributeName="r" values="4;26;26" keyTimes="0;0.45;1" dur="4s" begin="3.7s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.9;0;0" keyTimes="0;0.45;1" dur="4s" begin="3.7s" repeatCount="indefinite"/>
+            <animate attributeName="r" values="4;26;26" keyTimes="0;0.45;1" dur="4s" begin="0.1s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;0;0" keyTimes="0;0.45;1" dur="4s" begin="0.1s" repeatCount="indefinite"/>
           </circle>
-          <circle class="fx-packet fx-packet--soft" r="2">
-            <animateMotion dur="24s" repeatCount="indefinite" path="M240,60 A150,150 0 1 1 239.99,60"/>
+          <circle class="fx-ring fx-ring--accent" cx="240" cy="190" r="4" opacity="0">
+            <animate attributeName="r" values="4;22;22" keyTimes="0;0.45;1" dur="4s" begin="0.38s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;0;0" keyTimes="0;0.45;1" dur="4s" begin="0.38s" repeatCount="indefinite"/>
           </circle>
         </g>
       </svg>
@@ -238,13 +367,45 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">01 / Identity</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-a" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M14,24 L66,24 L66,56 L14,56 Z"/>
               <circle class="plate-line" vector-effect="non-scaling-stroke" cx="27" cy="36" r="5"/>
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M19,50 Q27,43 35,50"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="42" y1="34" x2="60" y2="34"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="42" y1="42" x2="60" y2="42"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="42" y1="50" x2="54" y2="50"/>
+              <g class="fx" aria-hidden="true">
+                <rect class="fx-wedge" x="14" y="24" width="52" height="1" opacity="0">
+                  <animate attributeName="height" values="1;1;31;31;1;1" keyTimes="0;0.0667;0.4333;0.8667;0.8833;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0583;0.0917;0.7;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </rect>
+                <circle class="fx-hi" cx="27" cy="36" r="5" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14;0.2622;0.7;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <path class="fx-hi" d="M19,50 Q27,43 35,50" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3233;0.3722;0.7;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <line class="fx-hi" x1="42" y1="34" x2="42" y2="34" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="42;42;60;60;42;42" keyTimes="0;0.1767;0.2517;0.8667;0.8833;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1733;0.1933;0.7;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <line class="fx-hi" x1="42" y1="42" x2="42" y2="42" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="42;42;60;60;42;42" keyTimes="0;0.2744;0.3494;0.8667;0.8833;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2711;0.2911;0.7;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <line class="fx-hi" x1="42" y1="50" x2="42" y2="50" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="42;42;54;54;42;42" keyTimes="0;0.3722;0.4472;0.8667;0.8833;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3689;0.3889;0.7;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <line class="fx-bar" x1="15" y1="25" x2="65" y2="25" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="y1" values="25;25;55;55;25;25" keyTimes="0;0.0667;0.4333;0.8333;0.85;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="y2" values="25;25;55;55;25;25" keyTimes="0;0.0667;0.4333;0.8333;0.85;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0417;0.075;0.425;0.475;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <path class="fx-hi" d="M14,24 L66,24 L66,56 L14,56 Z" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.5083;0.7;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">National identity systems</h3>
@@ -258,11 +419,41 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">02 / Interop</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-a" class="plate glyph-sm" data-fx-loop="5" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M12,22 L32,22 L32,42 L12,42 Z"/>
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M48,38 L68,38 L68,58 L48,58 Z"/>
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M32,30 L46,30 M42,26 L46,30 L42,34"/>
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M48,50 L34,50 M38,46 L34,50 L38,54"/>
+              <g class="fx" aria-hidden="true">
+                <rect class="fx-hi fx-hi--fill" x="12" y="22" width="20" height="20" opacity="1" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.29;0.37;0.77;0.83;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </rect>
+                <rect class="fx-hi fx-hi--fill" x="48" y="38" width="20" height="20" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.27;0.33;0.79;0.87;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </rect>
+                <path class="fx-hi" d="M32,30 L46,30 M42,26 L46,30 L42,34" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.14;0.24;0.36;0.48;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi" d="M48,50 L34,50 M38,46 L34,50 L38,54" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.64;0.74;0.86;0.98;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <circle class="fx-packet fx-packet--soft" r="1.7" opacity="0">
+                  <animateMotion dur="5s" repeatCount="indefinite" path="M24,30 L44,30" keyPoints="0;0;1;1" keyTimes="0;0.11;0.32;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.086;0.12;0.296;0.336;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2.4" opacity="0">
+                  <animateMotion dur="5s" repeatCount="indefinite" path="M24,30 L44,30" keyPoints="0;0;1;1" keyTimes="0;0.07;0.28;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.046;0.08;0.256;0.296;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet fx-packet--soft" r="1.7" opacity="0">
+                  <animateMotion dur="5s" repeatCount="indefinite" path="M56,50 L36,50" keyPoints="0;0;1;1" keyTimes="0;0.61;0.82;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.586;0.62;0.796;0.836;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2.4" opacity="0">
+                  <animateMotion dur="5s" repeatCount="indefinite" path="M56,50 L36,50" keyPoints="0;0;1;1" keyTimes="0;0.57;0.78;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.546;0.58;0.756;0.796;1" dur="5s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Data exchange layers</h3>
@@ -276,10 +467,31 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">03 / Justice</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-a" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M14,26 L32,26 L36,32 L66,32 L66,56 L14,56 Z"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="22" y1="42" x2="58" y2="42"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="22" y1="48" x2="50" y2="48"/>
+              <g class="fx" aria-hidden="true">
+                <line class="fx-hi" x1="22" y1="42" x2="22" y2="42" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="22;22;31;31;44;44;58;58;22;22" keyTimes="0;0.075;0.1333;0.1583;0.225;0.25;0.3167;0.8833;0.9;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0717;0.085;0.75;0.85;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <line class="fx-hi" x1="22" y1="48" x2="22" y2="48" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="22;22;35;35;50;50;22;22" keyTimes="0;0.35;0.4083;0.4333;0.5;0.8833;0.9;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3467;0.36;0.75;0.85;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-packet" cx="22" cy="42" r="2.2" opacity="0">
+                  <animate attributeName="cx" values="22;22;31;31;44;44;58;58;22;22" keyTimes="0;0.075;0.1333;0.1583;0.225;0.25;0.3167;0.8833;0.9;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0417;0.075;0.3167;0.3583;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="22" cy="48" r="2.2" opacity="0">
+                  <animate attributeName="cx" values="22;22;35;35;50;50;22;22" keyTimes="0;0.35;0.4083;0.4333;0.5;0.8833;0.9;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.3167;0.35;0.5;0.5417;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <path class="fx-hi fx-hi--fill" d="M14,26 L32,26 L36,32 L66,32 L66,56 L14,56 Z" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5167;0.5833;0.75;0.85;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Case management for security and justice</h3>
@@ -293,12 +505,25 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">04 / Records</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-a" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M26,18 L58,18 L58,50 L26,50 Z"/>
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M20,26 L52,26 L52,58 L20,58 Z"/>
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M14,34 L46,34 L46,66 L14,66 Z"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="20" y1="44" x2="40" y2="44"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="20" y1="50" x2="34" y2="50"/>
+              <g class="fx" aria-hidden="true">
+                <g opacity="0">
+                  <animateTransform attributeName="transform" type="translate" values="12 -16;12 -16;6 -8;6 -8;0 0;0 0;-7 9;-7 9" keyTimes="0;0.1667;0.25;0.325;0.4083;0.6833;0.825;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0333;0.1;0.7083;0.825;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <path class="fx-hi fx-hi--fill" vector-effect="non-scaling-stroke" d="M14,34 L46,34 L46,66 L14,66 Z"/>
+                  <line class="fx-hi" x1="20" y1="44" x2="20" y2="44" vector-effect="non-scaling-stroke">
+                    <animate attributeName="x2" values="20;20;40;40;20;20" keyTimes="0;0.4333;0.5;0.8833;0.9;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  </line>
+                  <line class="fx-hi" x1="20" y1="50" x2="20" y2="50" vector-effect="non-scaling-stroke">
+                    <animate attributeName="x2" values="20;20;34;34;20;20" keyTimes="0;0.4833;0.5417;0.8833;0.9;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  </line>
+                </g>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Digitization of public records</h3>
@@ -312,7 +537,7 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">05 / Integration</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-a" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M32,32 L48,32 L48,48 L32,48 Z"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="40" y1="32" x2="40" y2="18"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="40" y1="48" x2="40" y2="62"/>
@@ -322,6 +547,87 @@
               <circle cx="40" cy="65" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="15" cy="40" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="65" cy="40" r="2.5" fill="currentColor" stroke="none"/>
+              <g class="fx" aria-hidden="true">
+                <rect class="fx-hi fx-hi--fill" x="32" y="32" width="16" height="16" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.0167;0.0583;0.15;0.2333;0.525;0.5667;0.7917;0.8917;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </rect>
+                <line class="fx-hi" x1="40" y1="32" x2="40" y2="32" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="y2" values="32;32;18;18;32;32" keyTimes="0;0.075;0.2083;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.075;0.0917;0.2667;0.3667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M40,32 L40,15" keyPoints="0;0;1;1" keyTimes="0;0.075;0.2083;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0583;0.0833;0.2083;0.21;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="40" cy="15" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2067;0.2083;0.4167;0.4183;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="40" cy="15" r="2.5" opacity="0">
+                  <animate attributeName="r" values="2.5;2.5;7;2.5;2.5" keyTimes="0;0.2083;0.3417;0.35;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.2067;0.2083;0.3417;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M40,15 L40,32" keyPoints="0;0;1;1" keyTimes="0;0.4167;0.5333;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.415;0.4167;0.5167;0.5417;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <line class="fx-hi" x1="48" y1="40" x2="48" y2="40" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="48;48;62;62;48;48" keyTimes="0;0.075;0.2083;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.075;0.0917;0.2667;0.3667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M48,40 L65,40" keyPoints="0;0;1;1" keyTimes="0;0.075;0.2083;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0583;0.0833;0.2083;0.21;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="65" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2067;0.2083;0.4917;0.4933;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="65" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="r" values="2.5;2.5;7;2.5;2.5" keyTimes="0;0.2083;0.3417;0.35;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.2067;0.2083;0.3417;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M65,40 L48,40" keyPoints="0;0;1;1" keyTimes="0;0.4917;0.6083;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.49;0.4917;0.5917;0.6167;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <line class="fx-hi" x1="40" y1="48" x2="40" y2="48" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="y2" values="48;48;62;62;48;48" keyTimes="0;0.075;0.2083;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.075;0.0917;0.2667;0.3667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M40,48 L40,65" keyPoints="0;0;1;1" keyTimes="0;0.075;0.2083;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0583;0.0833;0.2083;0.21;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="40" cy="65" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2067;0.2083;0.5667;0.5683;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="40" cy="65" r="2.5" opacity="0">
+                  <animate attributeName="r" values="2.5;2.5;7;2.5;2.5" keyTimes="0;0.2083;0.3417;0.35;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.2067;0.2083;0.3417;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M40,65 L40,48" keyPoints="0;0;1;1" keyTimes="0;0.5667;0.6833;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.565;0.5667;0.6667;0.6917;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <line class="fx-hi" x1="32" y1="40" x2="32" y2="40" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="32;32;18;18;32;32" keyTimes="0;0.075;0.2083;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.075;0.0917;0.2667;0.3667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M32,40 L15,40" keyPoints="0;0;1;1" keyTimes="0;0.075;0.2083;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0583;0.0833;0.2083;0.21;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="15" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2067;0.2083;0.6417;0.6433;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="15" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="r" values="2.5;2.5;7;2.5;2.5" keyTimes="0;0.2083;0.3417;0.35;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.2067;0.2083;0.3417;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2.2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M15,40 L32,40" keyPoints="0;0;1;1" keyTimes="0;0.6417;0.7583;1" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.64;0.6417;0.7417;0.7667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Integration infrastructure</h3>
@@ -335,13 +641,34 @@
           <div class="card" style="background: var(--color-hero-bg);">
             <div class="glyph-head">
               <span class="card__index">Recce-led</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-a" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle class="plate-line" vector-effect="non-scaling-stroke" cx="36" cy="42" r="20"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="12" y1="42" x2="60" y2="42"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="36" y1="18" x2="36" y2="66"/>
               <circle cx="36" cy="42" r="2.5" fill="currentColor" stroke="none"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="52" y1="30" x2="66" y2="19" stroke-dasharray="4 4"/>
               <circle cx="68" cy="17" r="3" fill="currentColor" stroke="none"/>
+              <g class="fx" aria-hidden="true">
+                <g>
+                  <animateTransform attributeName="transform" type="rotate" values="0 36 42;360 36 42" dur="3s" repeatCount="indefinite"/>
+                  <path class="fx-wedge" d="M36,42 L20.679,29.144 A20,20 0 0,1 36,22 Z"/>
+                  <path class="fx-wedge" d="M36,42 L28.508,23.456 A20,20 0 0,1 36,22 Z"/>
+                  <path class="fx-wedge" d="M36,42 L33.217,22.195 A20,20 0 0,1 36,22 Z"/>
+                  <line class="fx-hi" vector-effect="non-scaling-stroke" x1="36" y1="42" x2="36" y2="22"/>
+                </g>
+                <line class="fx-hi" x1="52" y1="30" x2="52" y2="30" stroke-dasharray="4 4" opacity="0" vector-effect="non-scaling-stroke">
+                  <animate attributeName="x2" values="52;52;66;66;52;52" keyTimes="0;0.1444;0.2444;0.9;0.9333;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="y2" values="30;30;19;19;30;30" keyTimes="0;0.1444;0.2444;0.9;0.9333;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1378;0.1611;0.5444;0.7778;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-packet" cx="68" cy="17" r="3" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2278;0.2611;0.5778;0.8111;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="68" cy="17" r="3" opacity="0">
+                  <animate attributeName="r" values="3;3;9;3;3" keyTimes="0;0.2444;0.5778;0.5944;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.2411;0.2444;0.5778;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Every mission begins with a recce.</h3>
@@ -366,13 +693,42 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">06 / Cloud</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-b" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M22,16 L58,16 L58,64 L22,64 Z"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="22" y1="32" x2="58" y2="32"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="22" y1="48" x2="58" y2="48"/>
               <circle cx="28" cy="24" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="28" cy="40" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="28" cy="56" r="2.5" fill="currentColor" stroke="none"/>
+              <g class="fx" aria-hidden="true">
+                <line class="fx-sweep" x1="34" y1="24" x2="44" y2="24">
+                  <animate attributeName="x2" values="44;45;55;48.7;46;50;49;55;45.3;48;44" keyTimes="0;0.0333;0.075;0.1833;0.3333;0.5;0.5333;0.575;0.6833;0.8333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.16 1 .3 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.16 1 .3 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1"/>
+                </line>
+                <line class="fx-sweep" x1="34" y1="40" x2="48" y2="40">
+                  <animate attributeName="x2" values="48;46.56;55;46.9;50;46;47.44;55;47.48;45;48" keyTimes="0;0.08;0.1217;0.23;0.3333;0.5;0.58;0.6217;0.73;0.8333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.16 1 .3 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.16 1 .3 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1"/>
+                </line>
+                <line class="fx-sweep" x1="34" y1="56" x2="46" y2="56">
+                  <animate attributeName="x2" values="46;49.04;55;48.02;47;44;47.8;55;47.68;47;46" keyTimes="0;0.1267;0.1683;0.2767;0.3333;0.5;0.6267;0.6683;0.7767;0.8333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.16 1 .3 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.16 1 .3 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1"/>
+                </line>
+                <circle class="fx-packet" cx="28" cy="24" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.0333;0.0533;0.1833;0.2833;0.5333;0.5533;0.6833;0.7833;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="28" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.08;0.1;0.23;0.33;0.58;0.6;0.73;0.83;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="28" cy="56" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.1267;0.1467;0.2767;0.3767;0.6267;0.6467;0.7767;0.8767;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <path class="fx-hi" d="M22,16 L58,16 L58,32 L22,32 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.4;0.4;0;0;0.4;0.4;0;0" keyTimes="0;0.0333;0.0583;0.1;0.2167;0.5333;0.5583;0.6;0.7167;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi" d="M22,32 L58,32 L58,48 L22,48 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.4;0.4;0;0;0.4;0.4;0;0" keyTimes="0;0.08;0.105;0.1467;0.2633;0.58;0.605;0.6467;0.7633;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi" d="M22,48 L58,48 L58,64 L22,64 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.4;0.4;0;0;0.4;0.4;0;0" keyTimes="0;0.1267;0.1517;0.1933;0.31;0.6267;0.6517;0.6933;0.81;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Sovereign cloud &amp; government hosting</h3>
@@ -386,9 +742,37 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">07 / Cyber</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-b" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M40,14 L62,22 L62,42 Q62,58 40,66 Q18,58 18,42 L18,22 Z"/>
               <circle cx="40" cy="40" r="3" fill="currentColor" stroke="none"/>
+              <g class="fx" aria-hidden="true">
+                <path class="fx-wedge" d="M50.75,19 L41.125,15.5 L40,14.5 L40,14.5 L38.875,15.5 L29.25,19 Z" opacity="0">
+                  <animate attributeName="d" values="M50.75,19 L41.125,15.5 L40,14.5 L40,14.5 L38.875,15.5 L29.25,19 Z;M50.75,19 L41.125,15.5 L40,14.5 L40,14.5 L38.875,15.5 L29.25,19 Z;M51.3557,19.2203 L41.7307,15.7203 L40,14.5 L40,14.5 L38.2693,15.7203 L28.6443,19.2203 Z;M53.1037,19.8559 L43.4787,16.3559 L40,14.5 L40,14.5 L36.5213,16.3559 L26.8963,19.8559 Z;M55.8901,20.8691 L46.2651,17.3691 L40,14.5 L40,14.5 L33.7349,17.3691 L24.1099,20.8691 Z;M59,22.2222 L49.9861,18.7222 L40.3611,15.2222 L39.6389,15.2222 L30.0139,18.7222 L21,22.2222 Z;M59,23.8774 L54.5378,20.3774 L44.9128,16.8774 L35.0872,16.8774 L25.4622,20.3774 L21,23.8774 Z;M59,25.7969 L59,22.2969 L50.1914,18.7969 L29.8086,18.7969 L21,22.2969 L21,25.7969 Z;M59,27.9429 L59,24.4429 L56.093,20.9429 L23.907,20.9429 L21,24.4429 L21,27.9429 Z;M59,30.2778 L59,26.7778 L59,23.2778 L21,23.2778 L21,26.7778 L21,30.2778 Z;M59,32.7637 L59,29.2637 L59,25.7637 L21,25.7637 L21,29.2637 L21,32.7637 Z;M59,35.3628 L59,31.8628 L59,28.3628 L21,28.3628 L21,31.8628 L21,35.3628 Z;M59,38.0375 L59,34.5375 L59,31.0375 L21,31.0375 L21,34.5375 L21,38.0375 Z;M59,40.75 L59,37.25 L59,33.75 L21,33.75 L21,37.25 L21,40.75 Z;M58.953,43.4625 L59,39.9625 L59,36.4625 L21,36.4625 L21,39.9625 L21.047,43.4625 Z;M58.6064,46.1372 L58.9912,42.6372 L59,39.1372 L21,39.1372 L21.0088,42.6372 L21.3936,46.1372 Z;M57.9066,48.7363 L58.7628,45.2363 L59,41.7363 L21,41.7363 L21.2372,45.2363 L22.0934,48.7363 Z;M56.8498,51.2222 L58.2256,47.7222 L58.8901,44.2222 L21.1099,44.2222 L21.7744,47.7222 L23.1502,51.2222 Z;M55.4545,53.5571 L57.3961,50.0571 L58.5189,46.5571 L21.4811,46.5571 L22.6039,50.0571 L24.5455,53.5571 Z;M53.7677,55.7031 L56.3148,52.2031 L57.918,48.7031 L22.082,48.7031 L23.6852,52.2031 L26.2323,55.7031 Z;M51.8721,57.6226 L55.0502,54.1226 L57.1426,50.6226 L22.8574,50.6226 L24.9498,54.1226 L28.1279,57.6226 Z;M49.8919,59.2778 L53.7012,55.7778 L56.2712,52.2778 L23.7288,52.2778 L26.2988,55.7778 L30.1081,59.2778 Z;M47.9948,60.6309 L52.3961,57.1309 L55.4033,53.6309 L24.5967,53.6309 L27.6039,57.1309 L32.0052,60.6309 Z;M46.3854,61.6441 L51.2854,58.1441 L54.6527,54.6441 L25.3473,54.6441 L28.7146,58.1441 L33.6146,61.6441 Z;M45.2832,62.2797 L50.5247,58.7797 L54.1343,55.2797 L25.8657,55.2797 L29.4753,58.7797 L34.7168,62.2797 Z;M44.8833,62.5 L50.249,59 L53.9458,55.5 L26.0542,55.5 L29.751,59 L35.1167,62.5 Z;M44.8833,62.5 L50.249,59 L53.9458,55.5 L26.0542,55.5 L29.751,59 L35.1167,62.5 Z" keyTimes="0;0.05;0.0667;0.0833;0.1;0.1167;0.1333;0.15;0.1667;0.1833;0.2;0.2167;0.2333;0.25;0.2667;0.2833;0.3;0.3167;0.3333;0.35;0.3667;0.3833;0.4;0.4167;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.1167;0.3917;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <line class="fx-sweep" x1="29.25" y1="19" x2="50.75" y2="19" opacity="0">
+                  <animate attributeName="y1" values="19;19;19.2203;19.8559;20.8691;22.2222;23.8774;25.7969;27.9429;30.2778;32.7637;35.3628;38.0375;40.75;43.4625;46.1372;48.7363;51.2222;53.5571;55.7031;57.6226;59.2778;60.6309;61.6441;62.2797;62.5;62.5" keyTimes="0;0.05;0.0667;0.0833;0.1;0.1167;0.1333;0.15;0.1667;0.1833;0.2;0.2167;0.2333;0.25;0.2667;0.2833;0.3;0.3167;0.3333;0.35;0.3667;0.3833;0.4;0.4167;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="y2" values="19;19;19.2203;19.8559;20.8691;22.2222;23.8774;25.7969;27.9429;30.2778;32.7637;35.3628;38.0375;40.75;43.4625;46.1372;48.7363;51.2222;53.5571;55.7031;57.6226;59.2778;60.6309;61.6441;62.2797;62.5;62.5" keyTimes="0;0.05;0.0667;0.0833;0.1;0.1167;0.1333;0.15;0.1667;0.1833;0.2;0.2167;0.2333;0.25;0.2667;0.2833;0.3;0.3167;0.3333;0.35;0.3667;0.3833;0.4;0.4167;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="x1" values="29.25;29.25;28.6443;26.8963;24.1099;21;21;21;21;21;21;21;21;21;21.047;21.3936;22.0934;23.1502;24.5455;26.2323;28.1279;30.1081;32.0052;33.6146;34.7168;35.1167;35.1167" keyTimes="0;0.05;0.0667;0.0833;0.1;0.1167;0.1333;0.15;0.1667;0.1833;0.2;0.2167;0.2333;0.25;0.2667;0.2833;0.3;0.3167;0.3333;0.35;0.3667;0.3833;0.4;0.4167;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="x2" values="50.75;50.75;51.3557;53.1037;55.8901;59;59;59;59;59;59;59;59;59;58.953;58.6064;57.9066;56.8498;55.4545;53.7677;51.8721;49.8919;47.9948;46.3854;45.2832;44.8833;44.8833" keyTimes="0;0.05;0.0667;0.0833;0.1;0.1167;0.1333;0.15;0.1667;0.1833;0.2;0.2167;0.2333;0.25;0.2667;0.2833;0.3;0.3167;0.3333;0.35;0.3667;0.3833;0.4;0.4167;0.4333;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.0917;0.4;0.45;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-ring" cx="40" cy="40" r="3" opacity="0">
+                  <animate attributeName="r" values="3;3;11;11" keyTimes="0;0.25;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.2483;0.25;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="40" cy="40" r="3" opacity="0">
+                  <animate attributeName="r" values="3;3;8;8" keyTimes="0;0.7167;0.8667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.6;0;0" keyTimes="0;0.715;0.7167;0.8667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="40" cy="40" r="3" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.2417;0.2667;0.8167;0.9333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="3;3;3.8;3;3;3.6;3;3" keyTimes="0;0.2417;0.275;0.35;0.7083;0.7333;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <path class="fx-hi" d="M40,14 L62,22 L62,42 Q62,58 40,66 Q18,58 18,42 L18,22 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.75;0.75;0;0" keyTimes="0;0.4333;0.4917;0.55;0.7;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Sectoral CERTs &amp; cybersecurity</h3>
@@ -402,7 +786,7 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">08 / Skills</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-b" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="26" cy="26" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="40" cy="26" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="54" cy="26" r="2.5" fill="currentColor" stroke="none"/>
@@ -413,6 +797,48 @@
               <circle cx="40" cy="54" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="54" cy="54" r="2.5" fill="currentColor" stroke="none"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="20" y1="64" x2="60" y2="64"/>
+              <g class="fx" aria-hidden="true">
+                <circle class="fx-packet" cx="26" cy="26" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.05;0.07;0.15;0.4583;0.4817;0.5583;0.7167;0.8;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.05;0.0733;0.1333;0.4583;0.4817;0.5333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="40" cy="26" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.1;0.12;0.2;0.4883;0.5117;0.5883;0.7367;0.82;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.1;0.1233;0.1833;0.4883;0.5117;0.5633;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="54" cy="26" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.15;0.17;0.25;0.5183;0.5417;0.6183;0.7567;0.84;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.15;0.1733;0.2333;0.5183;0.5417;0.5933;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="26" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.1;0.12;0.2;0.4883;0.5117;0.5883;0.7367;0.82;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.1;0.1233;0.1833;0.4883;0.5117;0.5633;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="40" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.15;0.17;0.25;0.5183;0.5417;0.6183;0.7567;0.84;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.15;0.1733;0.2333;0.5183;0.5417;0.5933;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="54" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.2;0.22;0.3;0.5483;0.5717;0.6483;0.7767;0.86;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.2;0.2233;0.2833;0.5483;0.5717;0.6233;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="26" cy="54" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.15;0.17;0.25;0.5183;0.5417;0.6183;0.7567;0.84;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.15;0.1733;0.2333;0.5183;0.5417;0.5933;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="40" cy="54" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.2;0.22;0.3;0.5483;0.5717;0.6483;0.7767;0.86;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.2;0.2233;0.2833;0.5483;0.5717;0.6233;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="54" cy="54" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.7;0.7;1;0.7;0.7;0;0" keyTimes="0;0.25;0.27;0.35;0.5783;0.6017;0.6783;0.7967;0.88;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="2.5;2.5;3.5;2.5;2.5;3.2;2.5;2.5" keyTimes="0;0.25;0.2733;0.3333;0.5783;0.6017;0.6533;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <line class="fx-bar" x1="20" y1="64" x2="20" y2="64" opacity="0">
+                  <animate attributeName="x2" values="20;20;60;60;20;20" keyTimes="0;0.05;0.3167;0.8667;0.8683;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.05;0.0667;0.7167;0.8167;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Digital skills programs</h3>
@@ -426,7 +852,7 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">09 / Hubs</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-b" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="40" y1="40" x2="58" y2="40"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="40" y1="40" x2="49" y2="56"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="40" y1="40" x2="31" y2="56"/>
@@ -440,6 +866,99 @@
               <circle cx="19" cy="40" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="29" cy="21" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="51" cy="21" r="2.5" fill="currentColor" stroke="none"/>
+              <g class="fx" aria-hidden="true">
+                <circle class="fx-ring" cx="40" cy="40" r="7" opacity="0">
+                  <animate attributeName="r" values="7;13;13" keyTimes="0;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines=".16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines=".16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-hi" cx="40" cy="40" r="7" opacity="0">
+                  <animate attributeName="opacity" values="0;1;1;0;0;0.8;0.8;0;0" keyTimes="0;0.0167;0.0833;0.2167;0.5167;0.75;0.8167;0.95;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines=".16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M47.5,40 L58,40" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.025;0.1417;1" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.025;0.0367;0.1333;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="61" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1367;0.1583;0.2667;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M43.677,46.5368 L49,56" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.025;0.1417;1" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.025;0.0367;0.1333;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="51" cy="59" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1367;0.1583;0.2667;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M36.323,46.5368 L31,56" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.025;0.1417;1" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.025;0.0367;0.1333;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="29" cy="59" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1367;0.1583;0.2667;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M32.5,40 L22,40" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.025;0.1417;1" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.025;0.0367;0.1333;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="19" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1367;0.1583;0.2667;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M36.323,33.4632 L31,24" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.025;0.1417;1" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.025;0.0367;0.1333;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="29" cy="21" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1367;0.1583;0.2667;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M43.677,33.4632 L49,24" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.025;0.1417;1" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.025;0.0367;0.1333;0.15;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="51" cy="21" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1367;0.1583;0.2667;0.4;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet fx-packet--soft" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M58,40 L47.5,40" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.475;0.5833;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.475;0.4867;0.575;0.5867;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="61" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" keyTimes="0;0.45;0.47;0.5;0.6;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet fx-packet--soft" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M49,56 L43.677,46.5368" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.5083;0.6167;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5083;0.52;0.6083;0.62;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="51" cy="59" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" keyTimes="0;0.4833;0.5033;0.5333;0.6333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet fx-packet--soft" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M31,56 L36.323,46.5368" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.5417;0.65;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5417;0.5533;0.6417;0.6533;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="29" cy="59" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" keyTimes="0;0.5167;0.5367;0.5667;0.6667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet fx-packet--soft" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M22,40 L32.5,40" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.575;0.6833;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.575;0.5867;0.675;0.6867;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="19" cy="40" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" keyTimes="0;0.55;0.57;0.6;0.7;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet fx-packet--soft" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M31,24 L36.323,33.4632" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.6083;0.7167;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6083;0.62;0.7083;0.72;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="29" cy="21" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" keyTimes="0;0.5833;0.6033;0.6333;0.7333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet fx-packet--soft" r="2" opacity="0">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M49,24 L43.677,33.4632" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.6417;0.75;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.6417;0.6533;0.7417;0.7533;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="51" cy="21" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" keyTimes="0;0.6167;0.6367;0.6667;0.7667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Innovation hubs &amp; tech labs</h3>
@@ -453,12 +972,50 @@
           <div class="card">
             <div class="glyph-head">
               <span class="card__index">10 / Capital</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-b" class="plate glyph-sm" data-fx-loop="8" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M16,22 L64,22 L64,58 L16,58 Z"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="32" y1="22" x2="32" y2="58"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="48" y1="22" x2="48" y2="58"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="16" y1="34" x2="64" y2="34"/>
               <line class="plate-line" vector-effect="non-scaling-stroke" x1="16" y1="46" x2="64" y2="46"/>
+              <g class="fx" aria-hidden="true">
+                <line class="fx-bar" x1="16" y1="15" x2="16" y2="15" opacity="0">
+                  <animate attributeName="x2" values="16;16;64;64;58.6667;58.6667;53.3333;53.3333;48;48;42.6667;42.6667;37.3333;37.3333;32;32;26.6667;26.6667;21.3333;21.3333;16;16" keyTimes="0;0.0187;0.0938;0.1125;0.1475;0.16;0.195;0.2075;0.2425;0.255;0.29;0.3025;0.3375;0.35;0.385;0.3975;0.4325;0.445;0.48;0.4925;0.5275;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.0187;0.025;0.4925;0.5275;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                </line>
+                <path class="fx-hi fx-hi--fill" d="M16,22 L32,22 L32,34 L16,34 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.1125;0.1375;0.2;0.725;0.7812;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M32,22 L48,22 L48,34 L32,34 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.16;0.185;0.2475;0.7325;0.7887;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M48,22 L64,22 L64,34 L48,34 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.2075;0.2325;0.295;0.74;0.7963;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M16,34 L32,34 L32,46 L16,46 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.255;0.28;0.3425;0.7475;0.8037;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M32,34 L48,34 L48,46 L32,46 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.3025;0.3275;0.39;0.755;0.8113;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M48,34 L64,34 L64,46 L48,46 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.35;0.375;0.4375;0.7625;0.8187;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M16,46 L32,46 L32,58 L16,58 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.3975;0.4225;0.485;0.77;0.8263;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M32,46 L48,46 L48,58 L32,58 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.445;0.47;0.5325;0.7775;0.8337;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <path class="fx-hi fx-hi--fill" d="M48,46 L64,46 L64,58 L48,58 Z" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;0.45;0.45;0;0" keyTimes="0;0.4925;0.5175;0.58;0.785;0.8412;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </path>
+                <line class="fx-sweep" x1="16" y1="19" x2="16" y2="61" opacity="0">
+                  <animate attributeName="x1" values="16;16;64;64" keyTimes="0;0.5625;0.7125;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="x2" values="16;16;64;64" keyTimes="0;0.5625;0.7125;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5625;0.5813;0.6937;0.7125;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Early-stage capital administration</h3>
@@ -472,12 +1029,54 @@
           <div class="card" style="background: var(--color-hero-bg);">
             <div class="glyph-head">
               <span class="card__index">Mission-led</span>
-              <svg class="plate glyph-sm" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <svg data-scene="glyphs-home-b" class="plate glyph-sm" data-fx-loop="6" fill="none" stroke="currentColor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path class="plate-line" vector-effect="non-scaling-stroke" d="M40,18 L64,58 L16,58 Z"/>
               <circle cx="40" cy="18" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="64" cy="58" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="16" cy="58" r="2.5" fill="currentColor" stroke="none"/>
               <circle cx="40" cy="46" r="3" fill="currentColor" stroke="none"/>
+              <g class="fx" aria-hidden="true">
+                <line class="fx-hi" x1="40" y1="18" x2="40" y2="18" opacity="0">
+                  <animate attributeName="x2" values="40;40;64;64;40;40" keyTimes="0;0;0.1667;0.8833;0.885;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="y2" values="18;18;58;58;18;18" keyTimes="0;0;0.1667;0.8833;0.885;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0.9;0;0" keyTimes="0;0;0.0083;0.75;0.8667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <line class="fx-hi" x1="64" y1="58" x2="64" y2="58" opacity="0">
+                  <animate attributeName="x2" values="64;64;16;16;64;64" keyTimes="0;0.25;0.4167;0.8833;0.885;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="y2" values="58;58;58;58;58;58" keyTimes="0;0.25;0.4167;0.8833;0.885;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0.9;0;0" keyTimes="0;0.25;0.2583;0.75;0.8667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <line class="fx-hi" x1="16" y1="58" x2="16" y2="58" opacity="0">
+                  <animate attributeName="x2" values="16;16;40;40;16;16" keyTimes="0;0.5;0.6667;0.8833;0.885;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="y2" values="58;58;18;18;58;58" keyTimes="0;0.5;0.6667;0.8833;0.885;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1;0 0 1 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0.9;0;0" keyTimes="0;0.5;0.5083;0.75;0.8667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </line>
+                <circle class="fx-packet" cx="64" cy="58" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.1583;0.175;0.75;0.8667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="16" cy="58" r="2.5" opacity="0">
+                  <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4083;0.425;0.75;0.8667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="40" cy="46" r="4.5" opacity="0">
+                  <animate attributeName="r" values="4.5;4.5;7;7" keyTimes="0;0.1667;0.3333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.45;0;0" keyTimes="0;0.165;0.1667;0.3333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="40" cy="46" r="4.5" opacity="0">
+                  <animate attributeName="r" values="4.5;4.5;7;7" keyTimes="0;0.4167;0.5833;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.45;0;0" keyTimes="0;0.415;0.4167;0.5833;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-ring" cx="40" cy="46" r="4.5" opacity="0">
+                  <animate attributeName="r" values="4.5;4.5;12;12" keyTimes="0;0.6667;0.8333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                  <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.665;0.6667;0.8333;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0 0 1 1;.16 1 .3 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" cx="40" cy="46" r="3" opacity="0">
+                  <animate attributeName="opacity" values="0;0;0.6;0.35;0.35;0.8;0.6;0.6;1;1;0;0" keyTimes="0;0.1667;0.1833;0.2667;0.4167;0.4333;0.5167;0.6667;0.6833;0.8333;0.95;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1;.16 1 .3 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                  <animate attributeName="r" values="3;3;3.8;3;3" keyTimes="0;0.6667;0.6917;0.7667;1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+                <circle class="fx-packet" r="3" opacity="1">
+                  <animateMotion dur="6s" repeatCount="indefinite" path="M40,18 L64,58 L16,58 L40,18" calcMode="spline" keyPoints="0;0.3301;0.3301;0.6699;0.6699;1;1" keyTimes="0;0.1667;0.25;0.4167;0.5;0.6667;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+                </circle>
+              </g>
             </svg>
             </div>
             <h3 class="card__title">Programs designed with partners, run by mission teams.</h3>
