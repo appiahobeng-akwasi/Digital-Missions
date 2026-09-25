@@ -10,7 +10,9 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/styles.css?v=20260628.4">
+  <link rel="stylesheet" href="assets/styles.css?v=20260925.1">
+  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion')}},2500)}}catch(e){}})(document.documentElement);</script>
+  <script src="assets/motion.js?v=20260925.1" defer></script>
 </head>
 <body>
 
@@ -181,7 +183,7 @@
           <h3 class="pillar-title">Foundational systems the state controls.</h3>
         </header>
         <p class="pillar-intro">National identity systems, data exchange layers, case management platforms, public-records digitization, integration infrastructure. Designed to be sovereign, portable, and operable by the state long after we are gone.</p>
-        <svg class="plate pillar-plate" fill="none" stroke="currentColor" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Isometric wireframe drawing of three foundation courses stacked on a shared axis.">
+        <svg class="plate pillar-plate" data-loop="6" fill="none" stroke="currentColor" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Isometric wireframe drawing of three foundation courses stacked on a shared axis.">
           <title>Foundation courses on a shared axis</title>
           <line class="plate-line" x1="200" y1="88" x2="200" y2="408" stroke-dasharray="4 5"/>
           <path class="plate-line plate-line--strong" d="M200,196 L355.9,286 L200,376 L44.1,286 Z"/>
@@ -193,6 +195,21 @@
           <path class="plate-line plate-line--strong" d="M200,110 L269.3,150 L200,190 L130.7,150 Z"/>
           <path class="plate-line plate-line--strong" d="M269.3,150 L269.3,170 L200,210 L200,190 Z"/>
           <path class="plate-line plate-line--strong" d="M130.7,150 L130.7,170 L200,210 L200,190 Z"/>
+          <g class="fx" aria-hidden="true">
+          <path class="fx-hi fx-hi--fill" d="M200,196 L355.9,286 L200,376 L44.1,286 Z" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.180;0.200;0.350;1" dur="6s" repeatCount="indefinite"/>
+          </path>
+          <path class="fx-hi fx-hi--fill" d="M200,153 L312.5,218 L200,283 L87.5,218 Z" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.287;0.307;0.457;1" dur="6s" repeatCount="indefinite"/>
+          </path>
+          <path class="fx-hi fx-hi--fill" d="M200,110 L269.3,150 L200,190 L130.7,150 Z" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.393;0.413;0.563;1" dur="6s" repeatCount="indefinite"/>
+          </path>
+            <circle class="fx-packet" r="4" opacity="0">
+              <animateMotion dur="6s" repeatCount="indefinite" path="M200,408 L200,88" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="linear"/>
+              <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.03;0.46;0.5;1" dur="6s" repeatCount="indefinite"/>
+            </circle>
+          </g>
         </svg>
       </div>
 
@@ -202,7 +219,7 @@
           <h3 class="pillar-title">Programs and platforms running on the foundation.</h3>
         </header>
         <p class="pillar-intro">Sovereign cloud and government hosting. Sectoral CERTs and cybersecurity. Digital skills programs at national scale. Innovation hubs, mLabs, and Community Innovation Centres. Early-stage capital programs and venture trust funds. Each operated as a mission, with capability transfer built in.</p>
-        <svg class="plate pillar-plate" fill="none" stroke="currentColor" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Instrument dial with the needle at the on position, marked by a green indicator.">
+        <svg class="plate pillar-plate" data-loop="12" data-still="2.4" fill="none" stroke="currentColor" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Instrument dial with the needle at the on position, marked by a green indicator.">
           <title>A running instrument</title>
           <circle class="plate-line plate-line--strong" cx="160" cy="160" r="120"/>
           <g class="plate-line">
@@ -220,9 +237,27 @@
             <line x1="255.3" y1="105" x2="263.9" y2="100"/>
           </g>
           <circle class="plate-line" cx="160" cy="160" r="76"/>
-          <line class="plate-line plate-line--strong" x1="160" y1="160" x2="205.3" y2="114.7"/>
+          <line class="plate-line plate-line--strong fx-hide" x1="160" y1="160" x2="205.3" y2="114.7"/>
           <circle class="plate-dot" fill="currentColor" stroke="none" cx="160" cy="160" r="3"/>
-          <circle class="plate-dot--accent" fill="currentColor" stroke="none" cx="205.3" cy="114.7" r="4.5"/>
+          <circle class="plate-dot--accent fx-hide" fill="currentColor" stroke="none" cx="205.3" cy="114.7" r="4.5"/>
+          <g class="fx" aria-hidden="true">
+            <g>
+              <animateTransform attributeName="transform" type="rotate" from="0 160 160" to="360 160 160" dur="24s" repeatCount="indefinite"/>
+              <circle class="fx-soft" cx="160" cy="160" r="98"/>
+            </g>
+            <line class="fx-hi" x1="268" y1="160" x2="282" y2="160">
+              <animateTransform attributeName="transform" type="rotate" values="0 160 160;30 160 160;60 160 160;90 160 160;120 160 160;150 160 160;180 160 160;210 160 160;240 160 160;270 160 160;300 160 160;330 160 160" calcMode="discrete" dur="12s" repeatCount="indefinite"/>
+            </line>
+            <g>
+              <animateTransform attributeName="transform" type="rotate" values="-150 160 160;6 160 160;0 160 160" keyTimes="0;0.78;1" dur="1.8s" fill="freeze" calcMode="spline" keySplines=".3 0 .2 1;.4 0 .6 1"/>
+              <g>
+                <animateTransform attributeName="transform" type="rotate" values="0 160 160;-5 160 160;2 160 160;-3 160 160;0 160 160" keyTimes="0;0.25;0.5;0.75;1" dur="6s" begin="1.8s" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1;.45 0 .55 1;.45 0 .55 1"/>
+                <line class="plate-line plate-line--strong" x1="160" y1="160" x2="205.3" y2="114.7"/>
+                <circle class="plate-dot--accent" cx="205.3" cy="114.7" r="4.5"/>
+              </g>
+            </g>
+            <circle class="plate-dot" cx="160" cy="160" r="3"/>
+          </g>
         </svg>
       </div>
 
@@ -232,15 +267,32 @@
           <h3 class="pillar-title">Recces, strategy, and transparency reviews.</h3>
         </header>
         <p class="pillar-intro">Senior recce missions for partners considering large investments. Strategy support for ministries shaping a national digital agenda. Independent transparency reviews of programs already underway. Short engagements that often define the larger missions that follow.</p>
-        <svg class="plate pillar-plate" fill="none" stroke="currentColor" viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Survey instrument with a dashed sight line to a target marked by a green indicator.">
+        <svg class="plate pillar-plate" data-loop="6" fill="none" stroke="currentColor" viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Survey instrument with a dashed sight line to a target marked by a green indicator.">
           <title>The recce sight</title>
           <circle class="plate-line plate-line--strong" cx="110" cy="150" r="78"/>
           <line class="plate-line" x1="20" y1="150" x2="200" y2="150"/>
           <line class="plate-line" x1="110" y1="60" x2="110" y2="240"/>
           <circle class="plate-dot" fill="currentColor" stroke="none" cx="110" cy="150" r="4"/>
-          <line class="plate-line plate-line--strong" x1="185.7" y1="131.3" x2="266.4" y2="111.4" stroke-dasharray="4 5"/>
+          <line class="plate-line plate-line--strong fx-hide" x1="185.7" y1="131.3" x2="266.4" y2="111.4" stroke-dasharray="4 5"/>
           <circle class="plate-line plate-line--strong" cx="280" cy="108" r="14"/>
           <circle class="plate-dot--accent" fill="currentColor" stroke="none" cx="280" cy="108" r="4"/>
+          <g class="fx" aria-hidden="true">
+            <g>
+              <animateTransform attributeName="transform" type="rotate" from="0 110 150" to="360 110 150" dur="6s" repeatCount="indefinite"/>
+              <path class="fx-wedge" d="M110,150 L177.55,111 A78,78 0 0 1 188,150 Z"/>
+              <line class="fx-sweep" x1="110" y1="150" x2="188" y2="150"/>
+            </g>
+            <line class="plate-line plate-line--strong" x1="185.7" y1="131.3" x2="266.4" y2="111.4" stroke-dasharray="4 5">
+              <animate attributeName="stroke-dashoffset" values="9;0" dur="0.9s" repeatCount="indefinite"/>
+            </line>
+            <line class="fx-hi" x1="185.7" y1="131.3" x2="266.4" y2="111.4" opacity="0">
+              <animate attributeName="opacity" values="1;0;0" keyTimes="0;0.2;1" dur="6s" begin="5.77s" repeatCount="indefinite"/>
+            </line>
+            <circle class="fx-ring fx-ring--accent" cx="280" cy="108" r="14" opacity="0">
+              <animate attributeName="r" values="14;34;34" keyTimes="0;0.3;1" dur="6s" begin="5.77s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.9;0;0" keyTimes="0;0.3;1" dur="6s" begin="5.77s" repeatCount="indefinite"/>
+            </circle>
+          </g>
         </svg>
       </div>
     </div>

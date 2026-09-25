@@ -15,7 +15,9 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/styles.css?v=20260628.4">
+  <link rel="stylesheet" href="assets/styles.css?v=20260925.1">
+  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion')}},2500)}}catch(e){}})(document.documentElement);</script>
+  <script src="assets/motion.js?v=20260925.1" defer></script>
 </head>
 <body>
 
@@ -74,7 +76,7 @@
         <a class="btn" href="contact.html">Contact us</a>
       </div>
 
-      <svg class="plate hero-plate" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of the mission system: a mission connects the partner ministry, the mission team, and the donor or funder.">
+      <svg class="plate hero-plate" data-loop="12" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of the mission system: a mission connects the partner ministry, the mission team, and the donor or funder.">
         <title>The mission system</title>
         <!-- Outer system boundary -->
         <circle class="plate-line" cx="240" cy="210" r="150"/>
@@ -94,6 +96,36 @@
         <circle class="plate-node" cx="369.9" cy="285" r="24"/>
         <circle class="plate-dot" fill="currentColor" stroke="none" cx="369.9" cy="285" r="3"/>
         <text class="plate-text" fill="currentColor" stroke="none" x="370" y="334">Donor / funder</text>
+        <g class="fx" aria-hidden="true">
+          <circle class="fx-ring" cx="240" cy="60" r="24" opacity="0">
+            <animate attributeName="r" values="24;42;42" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-ring" cx="110.1" cy="285" r="24" opacity="0">
+            <animate attributeName="r" values="24;42;42" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-ring" cx="369.9" cy="285" r="24" opacity="0">
+            <animate attributeName="r" values="24;42;42" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0;0" keyTimes="0;0.4;1" dur="4s" begin="3.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-packet" r="3.2">
+            <animateMotion dur="12s" begin="0s" repeatCount="indefinite" path="M240,60 L110.1,285 L369.9,285 Z" calcMode="spline" keyPoints="0;0.3333;0.3333;0.6667;0.6667;1;1" keyTimes="0;0.2833;0.3333;0.6167;0.6667;0.95;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+          </circle>
+          <circle class="fx-packet" r="3.2">
+            <animateMotion dur="12s" begin="-4s" repeatCount="indefinite" path="M240,60 L110.1,285 L369.9,285 Z" calcMode="spline" keyPoints="0;0.3333;0.3333;0.6667;0.6667;1;1" keyTimes="0;0.2833;0.3333;0.6167;0.6667;0.95;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+          </circle>
+          <circle class="fx-packet" r="3.2">
+            <animateMotion dur="12s" begin="-8s" repeatCount="indefinite" path="M240,60 L110.1,285 L369.9,285 Z" calcMode="spline" keyPoints="0;0.3333;0.3333;0.6667;0.6667;1;1" keyTimes="0;0.2833;0.3333;0.6167;0.6667;0.95;1" keySplines=".45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+          </circle>
+          <circle class="fx-ring fx-ring--accent" cx="240" cy="190" r="4" opacity="0">
+            <animate attributeName="r" values="4;26;26" keyTimes="0;0.45;1" dur="4s" begin="3.7s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;0;0" keyTimes="0;0.45;1" dur="4s" begin="3.7s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-packet fx-packet--soft" r="2">
+            <animateMotion dur="24s" repeatCount="indefinite" path="M240,60 A150,150 0 1 1 239.99,60"/>
+          </circle>
+        </g>
       </svg>
     </div>
   </section>

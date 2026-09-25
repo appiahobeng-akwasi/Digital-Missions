@@ -10,7 +10,9 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/styles.css?v=20260628.4">
+  <link rel="stylesheet" href="assets/styles.css?v=20260925.1">
+  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion')}},2500)}}catch(e){}})(document.documentElement);</script>
+  <script src="assets/motion.js?v=20260925.1" defer></script>
 </head>
 <body>
 
@@ -55,7 +57,7 @@
       <h1>The frameworks where we are positioned to engage.</h1>
       <p class="hero-summary">Digital Missions operates as the local implementation partner inside donor-funded programs. These are the frameworks where our capabilities map directly onto active or upcoming digital programs across Africa.</p>
 
-      <svg class="plate hero-plate" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of donor financing flowing through Digital Missions, with the partner state, into working systems.">
+      <svg class="plate hero-plate" data-loop="8" data-still="4.6" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of donor financing flowing through Digital Missions, with the partner state, into working systems.">
         <title>How donor financing becomes working systems</title>
         <!-- Donor node -->
         <circle class="plate-node" cx="70" cy="120" r="30"/>
@@ -80,6 +82,73 @@
         <path class="plate-line" vector-effect="non-scaling-stroke" d="M370,178 L430,178 L430,222 L370,222 Z"/>
         <path class="plate-line" vector-effect="non-scaling-stroke" d="M370,224 L430,224 L430,268 L370,268 Z"/>
         <text class="plate-text" fill="currentColor" stroke="none" x="400" y="296">Working systems</text>
+        <g class="fx" aria-hidden="true">
+          <circle class="fx-ring" cx="70" cy="120" r="30" opacity="0">
+            <animate attributeName="r" values="30;44;44" keyTimes="0;0.12;1" dur="8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.7;0;0" keyTimes="0;0.12;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-ring" cx="70" cy="280" r="30" opacity="0">
+            <animate attributeName="r" values="30;44;44" keyTimes="0;0.12;1" dur="8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.7;0;0" keyTimes="0;0.12;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-packet" r="3.2" opacity="0">
+            <animateMotion dur="8s" repeatCount="indefinite" path="M100,120 L150,120 L150,160 L196,160" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.020;0.190;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.020;0.030;0.180;0.190;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-packet" r="3.2" opacity="0">
+            <animateMotion dur="8s" repeatCount="indefinite" path="M100,280 L150,280 L150,240 L196,240" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.040;0.210;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.040;0.050;0.200;0.210;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <path class="fx-hi" d="M200,130 L330,130 L330,270 L200,270 Z" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0;0" keyTimes="0;0.21;0.23;0.4;1" dur="8s" repeatCount="indefinite"/>
+          </path>
+          <circle class="fx-ring fx-ring--accent" cx="265" cy="180" r="4" opacity="0">
+            <animate attributeName="r" values="4;4;30;30" keyTimes="0;0.22;0.4;1" dur="8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.219;0.22;0.4;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-packet" r="2.6" opacity="0">
+            <animateMotion dur="8s" repeatCount="indefinite" path="M334,154 L368,154" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.300;0.380;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.300;0.310;0.370;0.380;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-packet" r="2.6" opacity="0">
+            <animateMotion dur="8s" repeatCount="indefinite" path="M334,200 L368,200" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.330;0.410;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.330;0.340;0.400;0.410;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <circle class="fx-packet" r="2.6" opacity="0">
+            <animateMotion dur="8s" repeatCount="indefinite" path="M334,246 L368,246" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.360;0.440;1" keySplines="0 0 1 1;.45 0 .55 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.360;0.370;0.430;0.440;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <path class="fx-hi" d="M370,132 L430,132 L430,176 L370,176 Z" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0.35;0.35;0;0" keyTimes="0;0.380;0.400;0.500;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </path>
+          <line class="fx-bar" x1="378" y1="164" x2="378" y2="164" opacity="0">
+            <animate attributeName="x2" values="378;378;422;422;378" keyTimes="0;0.380;0.540;0.95;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.380;0.390;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </line>
+          <circle class="fx-packet" cx="379" cy="143" r="2" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.540;0.550;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <path class="fx-hi" d="M370,178 L430,178 L430,222 L370,222 Z" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0.35;0.35;0;0" keyTimes="0;0.410;0.430;0.530;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </path>
+          <line class="fx-bar" x1="378" y1="210" x2="378" y2="210" opacity="0">
+            <animate attributeName="x2" values="378;378;422;422;378" keyTimes="0;0.410;0.570;0.95;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.410;0.420;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </line>
+          <circle class="fx-packet" cx="379" cy="189" r="2" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.570;0.580;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+          <path class="fx-hi" d="M370,224 L430,224 L430,268 L370,268 Z" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;0.35;0.35;0;0" keyTimes="0;0.440;0.460;0.560;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </path>
+          <line class="fx-bar" x1="378" y1="256" x2="378" y2="256" opacity="0">
+            <animate attributeName="x2" values="378;378;422;422;378" keyTimes="0;0.440;0.600;0.95;1" dur="8s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;.16 1 .3 1;0 0 1 1;0 0 1 1"/>
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.440;0.450;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </line>
+          <circle class="fx-packet" cx="379" cy="235" r="2" opacity="0">
+            <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.600;0.610;0.9;0.95;1" dur="8s" repeatCount="indefinite"/>
+          </circle>
+        </g>
       </svg>
     </div>
   </section>

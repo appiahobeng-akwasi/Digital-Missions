@@ -2669,3 +2669,281 @@ details.funder-row > .funder-row__programs {
   margin-top: 0.85rem;
   max-width: 60ch;
 }
+
+/* ==========================================================================
+   MOTION
+   Plates play as short looping films with a transport bar; everything else
+   enters once and then holds still. All of it lives under html.motion, which
+   the inline <head> script sets only for readers who have not asked for
+   reduced motion. Without it the site is the static document it always was.
+   ========================================================================== */
+
+:root {
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+}
+
+.dm-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Plates: nothing shows until the drawing starts ---------------------- */
+
+.motion .plate:not(.is-drawn) > :not(title):not(.fx) { opacity: 0; }
+.motion .plate .fx-hide { visibility: hidden; }
+
+/* Loop layers exist only while motion runs */
+.plate .fx { display: none; }
+.motion .plate .fx { display: inline; opacity: 0; transition: opacity .6s ease; }
+.motion .plate.is-live .fx { opacity: 1; }
+
+.fx-packet { fill: var(--color-text); stroke: none; }
+.fx-packet--soft { fill: var(--color-text-muted); }
+.fx-ring {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.fx-ring--accent { stroke: var(--color-accent); }
+.fx-hi {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.fx-hi--fill { fill: var(--color-text); fill-opacity: .05; }
+.fx-bar {
+  stroke: var(--color-text);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.fx-soft {
+  fill: none;
+  stroke: var(--color-border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 2 9;
+  vector-effect: non-scaling-stroke;
+}
+.fx-sweep {
+  stroke: var(--color-text-muted);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.fx-wedge { fill: var(--color-text); fill-opacity: .06; stroke: none; }
+
+/* --- Transport bar: every looping plate is a film you can stop ---------- */
+
+:where(figure.scene) { margin: 0; }
+
+.scene-bar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: .7rem;
+  margin-top: .9rem;
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.scene-bar__label {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pillar-plate .scene-bar__name { display: none; }
+
+.scene-bar__btn {
+  width: 24px;
+  height: 24px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 140ms ease, color 140ms ease;
+}
+.scene-bar__btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.scene-bar__btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.scene-bar__icon {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(90deg, currentColor 0 3px, transparent 3px 5px, currentColor 5px 8px);
+}
+.motion-paused .scene-bar__icon {
+  width: 8px;
+  background: currentColor;
+  clip-path: polygon(12% 0, 100% 50%, 12% 100%);
+  transform: translateX(1px);
+}
+
+.scene-bar__track {
+  grid-column: 1 / -1;
+  height: 1px;
+  margin-top: .65rem;
+  background: var(--color-border);
+  overflow: hidden;
+}
+.scene-bar__fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.scene-bar--wide,
+.lifecycle + .scene-bar,
+.ecowas-map + .scene-bar { max-width: 760px; }
+.lifecycle + .scene-bar { margin-top: -1.25rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+/* --- Scroll playhead: the page as a timeline ---------------------------- */
+
+.dm-playhead {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: 100;
+  pointer-events: none;
+}
+.dm-playhead > span {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* --- Kinetic type ------------------------------------------------------- */
+
+.motion .hero-soft h1:not(.is-split),
+.motion .dark-block h2:not(.is-split) { visibility: hidden; }
+
+.motion .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: .14em;
+  margin-bottom: -.14em;
+}
+.motion .w__i {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 1s var(--ease-out);
+  transition-delay: calc(150ms + var(--wi, 0) * 45ms);
+}
+.motion .w-in .w__i { transform: none; }
+
+.motion .hero-tag:not(.is-in) { opacity: 0; }
+
+.motion .hero-soft .hero-summary,
+.motion .hero-soft .hero-actions {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+.motion .hero-soft.is-in .hero-summary {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--d-after, 400ms);
+}
+.motion .hero-soft.is-in .hero-actions {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--d-after, 400ms) + 120ms);
+}
+
+/* --- Enter once, then hold still ---------------------------------------
+   Grid items keep their own background (the hairline grids depend on it);
+   only their contents move. */
+
+.motion [data-reveal] > *,
+.motion [data-reveal-self] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.motion [data-reveal].is-in > *,
+.motion [data-reveal-self].is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms + var(--j, 0) * 50ms);
+}
+
+/* --- Numbers roll like an odometer -------------------------------------- */
+
+.roll { display: inline-flex; font-variant-numeric: tabular-nums; }
+.roll__col { display: inline-block; height: 1em; overflow: hidden; line-height: 1; }
+.roll__strip {
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.8s var(--ease-out);
+  transition-delay: calc(250ms + var(--i, 0) * 120ms + var(--c, 0) * 90ms);
+}
+.roll__strip > span { display: block; height: 1em; line-height: 1; }
+.is-in .roll__strip { transform: translateY(calc(var(--to) * -1em)); }
+
+/* --- Lifecycle: chapters playing in sequence ---------------------------- */
+
+.motion .lifecycle-stage { position: relative; transition: background-color .6s ease; }
+.motion .lifecycle-stage.is-active { background: var(--color-hero-bg); }
+.lc-seg {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  overflow: hidden;
+}
+.lc-seg > span {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.motion .lifecycle-stage__num { transition: color .6s ease; }
+.motion .lifecycle-stage.is-active .lifecycle-stage__num { color: var(--color-accent); }
+
+/* --- Map: a scan crosses the region; countries come online -------------- */
+
+.motion .ecowas-map .country path { transition: fill .8s ease, stroke .8s ease; }
+.motion .ecowas-map .country:hover path,
+.motion .ecowas-map .country:focus path { transition-duration: .16s; }
+.ecowas-map .country.is-lit:not(:hover):not(:focus) path {
+  fill: color-mix(in srgb, var(--color-accent) 18%, var(--color-hero-bg));
+  stroke: color-mix(in srgb, var(--color-accent) 42%, var(--color-hero-bg));
+}
+.map-scan {
+  color: var(--color-accent);
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+.map-scan line {
+  stroke: currentColor;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+@media print {
+  .dm-playhead,
+  .scene-bar,
+  .plate .fx { display: none !important; }
+  .motion * { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+}
