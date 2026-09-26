@@ -2945,8 +2945,20 @@ details.funder-row > .funder-row__programs {
 @media print {
   .dm-playhead,
   .scene-bar,
-  .plate .fx { display: none !important; }
-  .motion * { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+  .plate .fx,
+  .ecowas-map .fx,
+  .map-scan { display: none !important; }
+  .motion [data-reveal] > *,
+  .motion [data-reveal-self],
+  .motion .w__i,
+  .motion .hero-tag,
+  .motion .hero-soft .hero-summary,
+  .motion .hero-soft .hero-actions { opacity: 1 !important; transform: none !important; }
+  .motion .plate > :not(.fx),
+  .motion .ecowas-map .country { opacity: 1 !important; }
+  .motion .plate .fx-hide,
+  .motion .hero-soft h1,
+  .motion .dark-block h2 { visibility: visible !important; }
 }
 
 /* ==========================================================================
@@ -3074,7 +3086,7 @@ html.motion-paused::view-transition-new(root) { animation: none; }
 .dm-cross { pointer-events: none; opacity: 0; transition: opacity .2s ease; }
 .dm-cross.is-on { opacity: 1; }
 .dm-cross line {
-  stroke: var(--color-accent);
+  stroke: var(--color-text-muted);
   stroke-width: 1;
   stroke-dasharray: 2 4;
   vector-effect: non-scaling-stroke;
@@ -3114,7 +3126,7 @@ html.motion-paused::view-transition-new(root) { animation: none; }
 
 .motion .stat .stat__num {
   padding-bottom: .35rem;
-  background: linear-gradient(var(--color-accent), var(--color-accent)) no-repeat left bottom / 0 1px;
+  background: linear-gradient(var(--color-text), var(--color-text)) no-repeat left bottom / 0 1px;
 }
 .motion .stat.is-in .stat__num {
   background-size: 2.25rem 1px;
@@ -3289,7 +3301,7 @@ html.motion.motion-paused .plate:not(.is-drawn) > :not(title):not(.fx) { opacity
 /* --- The transport bar's room is held before the engine builds it -------- */
 
 .motion svg.plate.hero-plate[data-loop],
-.motion svg.plate.pillar-plate[data-loop] { margin-bottom: 3.6rem; }
+.motion svg.plate.pillar-plate[data-loop] { margin-bottom: calc(.9rem + 35.4px); }
 
 @media (max-width: 480px) {
   .scene-bar { letter-spacing: .08em; column-gap: .5rem; }
@@ -3297,4 +3309,26 @@ html.motion.motion-paused .plate:not(.is-drawn) > :not(title):not(.fx) { opacity
 
 @media print {
   .roll__strip { transform: translateY(calc(var(--to) * -1em)) !important; transition: none !important; }
+}
+
+/* --- Prohibitions never take the accent ------------------------------------ */
+
+@media (pointer: fine) {
+  .motion [data-reveal]:has(.redline-glyph) {
+    background-image: radial-gradient(280px circle at var(--mx, -400px) var(--my, -400px),
+      color-mix(in srgb, var(--color-text) 5%, transparent), transparent 70%);
+  }
+  .motion [data-reveal]:has(.redline-glyph):hover {
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text) 22%, transparent);
+  }
+}
+
+/* --- Map labels stay whole on hover and focus ----------------------------- */
+
+.ecowas-map .country:hover text,
+.ecowas-map .country:focus text {
+  stroke: var(--color-accent);
+  stroke-width: 4px;
+  paint-order: stroke;
+  stroke-linejoin: round;
 }

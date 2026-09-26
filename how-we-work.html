@@ -10,9 +10,9 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/styles.css?v=20260926.6">
-  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');var p=null,s=null;try{p=localStorage.getItem('dm-motion');s=sessionStorage.getItem('dm-intro')}catch(e){}if(p==='paused'){d.classList.add('motion-paused')}else if(!s&&!location.hash){d.classList.add('intro')}setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion','intro')}},2500)}}catch(e){}})(document.documentElement);</script>
-  <script src="assets/motion.js?v=20260926.6" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20260926.8">
+  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');var p=null,s=null,w=/\bdm-intro\b/;try{p=localStorage.getItem('dm-motion')}catch(e){}try{s=sessionStorage.getItem('dm-intro')}catch(e){}if(!s&&w.test(window.name)){s='1'}if(p==='paused'){d.classList.add('motion-paused')}else if(!s&&!location.hash){d.classList.add('intro')}if(!d.classList.contains('intro')){try{sessionStorage.setItem('dm-intro','1')}catch(e){}if(!w.test(window.name)){window.name=(window.name+' dm-intro').replace(/^ /,'')}}setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion','intro')}},2500)}}catch(e){}})(document.documentElement);</script>
+  <script src="assets/motion.js?v=20260926.8" defer></script>
 </head>
 <body>
 
@@ -57,7 +57,7 @@
       <h1>Every engagement Digital Missions takes on is a mission.</h1>
       <p class="hero-summary">Each mission has a defined partner, scope, team, timeline, and objective. The work of the company is the running of missions.</p>
 
-      <svg data-scene="hero-how-we-work" class="plate hero-plate" data-loop="15" data-still="12.85" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of the mission cycle: five stations on a ring, recce, mission brief, team deployed, build and handover, run in sequence. At handover, ownership of the system passes out of the cycle to the state.">
+      <svg data-scene="hero-how-we-work" class="plate hero-plate" data-loop="15" data-still="12.85" fill="none" stroke="currentColor" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schematic of the mission cycle: five stations on a ring, recce, mission brief, team deployed, implementation and handover, run in sequence. At handover, ownership of the system passes out of the cycle to the state.">
         <title>The mission cycle</title>
         <!-- The cycle: a ring graduated in one-second steps -->
         <circle class="plate-line" vector-effect="non-scaling-stroke" cx="268" cy="213" r="128"/>
@@ -80,7 +80,7 @@
         <text class="plate-text" fill="currentColor" stroke="none" x="343.2" y="350.6">Team</text>
         <circle class="plate-node" vector-effect="non-scaling-stroke" cx="192.8" cy="316.6" r="17"/>
         <circle class="plate-dot" fill="currentColor" stroke="none" cx="192.8" cy="316.6" r="2.6"/>
-        <text class="plate-text" fill="currentColor" stroke="none" x="192.8" y="350.6">Build</text>
+        <text class="plate-text" fill="currentColor" stroke="none" x="192.8" y="350.6">Implement</text>
         <circle class="plate-node" vector-effect="non-scaling-stroke" cx="146.3" cy="173.4" r="17"/>
         <circle class="plate-dot" fill="currentColor" stroke="none" cx="146.3" cy="173.4" r="2.6"/>
         <text class="plate-text" fill="currentColor" stroke="none" x="122" y="137">Handover</text>
@@ -130,7 +130,7 @@
         <text class="plate-text fx-label" fill="currentColor" stroke="none" x="268" y="56" opacity="0">Recce<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.08;0.1067;0.988;1" dur="15s" repeatCount="indefinite"/></text>
         <text class="plate-text fx-label" fill="currentColor" stroke="none" x="435.7" y="176.9" opacity="0">Brief<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.188;0.2;0.28;0.3067;1" dur="15s" repeatCount="indefinite"/></text>
         <text class="plate-text fx-label" fill="currentColor" stroke="none" x="343.2" y="350.6" opacity="0">Team<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.388;0.4;0.48;0.5067;1" dur="15s" repeatCount="indefinite"/></text>
-        <text class="plate-text fx-label" fill="currentColor" stroke="none" x="192.8" y="350.6" opacity="0">Build<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.588;0.6;0.68;0.7067;1" dur="15s" repeatCount="indefinite"/></text>
+        <text class="plate-text fx-label" fill="currentColor" stroke="none" x="192.8" y="350.6" opacity="0">Implement<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.588;0.6;0.68;0.7067;1" dur="15s" repeatCount="indefinite"/></text>
         <text class="plate-text fx-label" fill="currentColor" stroke="none" x="122" y="137" opacity="0">Handover<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.788;0.8;0.8767;0.9033;1" dur="15s" repeatCount="indefinite"/></text>
         <text class="plate-text fx-label" fill="currentColor" stroke="none" x="49.3" y="106.9" opacity="0">State<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.8733;0.8867;0.9467;0.9933;1" dur="15s" repeatCount="indefinite"/></text>
         <text class="plate-text plate-text--center" fill="currentColor" stroke="none" x="268" y="226" opacity="0">01<animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.184;0.2;0.984;1" dur="15s" repeatCount="indefinite"/></text>

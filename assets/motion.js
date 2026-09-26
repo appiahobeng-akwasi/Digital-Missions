@@ -39,12 +39,20 @@
   const quiet = () => paused || dead;
 
   const stop = (err) => {
+    if (dead) return;
     dead = true;
+    if (document.getAnimations) document.getAnimations().forEach((a) => { try { a.finish(); } catch (e) { a.cancel(); } });
     document.querySelectorAll('figure.scene, figure.scene svg, .btn').forEach((n) => { n.style.transform = ''; n.style.translate = ''; });
     root.classList.remove('motion', 'intro');
     document.querySelectorAll('.dm-intro, canvas.dm-field').forEach((n) => n.remove());
     stillAll();
     if (err && window.console) console.error(err);
+  };
+
+  /* Anything the engine runs later (observers, pointer handlers, frames) goes
+     through guard: an error there stops the engine and leaves the page static. */
+  const guard = (fn) => function guarded(...a) {
+    try { return fn.apply(this, a); } catch (err) { stop(err); return undefined; }
   };
 
   const el = (tag, cls, text) => {
@@ -189,6 +197,7 @@
     begin() {
       this.started = true;
       this.t = paused ? this.still : 0;
+      if (this.hooks.seek) this.hooks.seek(this.t);
       this.tick(this.t % this.loop);
       this.sync();
     }
@@ -203,7 +212,7 @@
 
   let rafId = 0;
   let last = 0;
-  function frame(now) {
+  const frame = guard((now) => {
     const dt = last ? Math.min(0.1, (now - last) / 1000) : 0;
     last = now;
     let any = false;
@@ -220,7 +229,7 @@
       rafId = 0;
       last = 0;
     }
-  }
+  });
   const kick = () => { if (!rafId && !dead) rafId = requestAnimationFrame(frame); };
   const syncAll = () => { tickers.forEach((s) => s.sync()); kick(); };
 
@@ -235,7 +244,11 @@
       tickers.forEach((s) => {
         if (!s.started || !s.bar) return;
         if (s instanceof SvgLoop) clocks(s.el).forEach((c) => c.setCurrentTime(s.still));
-        else if (s instanceof ClockScene) { s.t = s.still; s.tick(s.t % s.loop); }
+        else if (s instanceof ClockScene) {
+          s.t = s.still;
+          if (s.hooks.seek) s.hooks.seek(s.still);
+          s.tick(s.t % s.loop);
+        }
       });
     }
     syncAll();
@@ -282,24 +295,24 @@
   }
 
   /* Films start (draw, then loop) the first time they are a quarter in view */
-  const filmIO = new IntersectionObserver((entries) => {
+  const filmIO = new IntersectionObserver(guard((entries) => {
     entries.forEach((e) => {
       const s = e.target._scene;
       s.visible = e.isIntersecting;
       if (s.visible && !s.started && !s.starting) {
         s.starting = true;
-        s.intro().then(() => { s.begin(); kick(); });
+        s.intro().then(guard(() => { s.begin(); kick(); })).catch(stop);
       }
       s.sync();
     });
     kick();
-  }, { threshold: 0.25 });
+  }), { threshold: 0.25 });
 
   /* Loops and fields only need to know whether they are on screen */
-  const visIO = new IntersectionObserver((entries) => {
+  const visIO = new IntersectionObserver(guard((entries) => {
     entries.forEach((e) => { const s = e.target._ticker; if (s) { s.visible = e.isIntersecting; s.sync(); } });
     kick();
-  }, { threshold: 0 });
+  }), { threshold: 0 });
 
   function registerFilm(scene, n) {
     scene.el._scene = scene;
@@ -334,7 +347,12 @@
     kick();
   }
   function drawGlyph(svg) {
-    return drawIn(svg, GLYPH).then(() => glyphLoop(svg));
+    try {
+      return drawIn(svg, GLYPH).then(guard(() => glyphLoop(svg))).catch(stop);
+    } catch (err) {
+      stop(err);
+      return Promise.resolve();
+    }
   }
 
   /* ============================================================ lifecycle */
@@ -396,22 +414,23 @@
     const fx = svg.querySelector(':scope > .fx');
     if (fx) svg.insertBefore(scan, fx); else svg.append(scan);
 
-    const SWEEP = 6;
-    const FADE = 9;
+    const SWEEP = 7;
+    const FADE = 10.5;
     const x0 = vb.x - 20;
     const span = vb.width + 40;
-    const scene = new ClockScene(svg, 10, 'Phase 01, West Africa', (t) => {
+    const scene = new ClockScene(svg, 12, 'Phase 01, West Africa', (t) => {
       const x = t < SWEEP ? x0 + (t / SWEEP) * span : x0 + span + 200;
       scan.setAttribute('transform', `translate(${x.toFixed(1)} 0)`);
       scan.style.opacity = t < SWEEP ? '1' : '0';
       countries.forEach((c) => c.g.classList.toggle('is-lit', t < FADE && x >= c.x));
-    }, 7.5, {
+    }, 8.5, {
       play: () => { if (svg.unpauseAnimations) svg.unpauseAnimations(); },
       pause: () => { if (svg.pauseAnimations) svg.pauseAnimations(); },
+      seek: (t) => { if (svg.setCurrentTime) svg.setCurrentTime(t); },
     });
     scene.intro = () => {
       svg.classList.add('is-drawn');
-      if (paused) { svg.classList.add('is-live'); return Promise.resolve(); }
+      if (quiet()) { svg.classList.add('is-live'); return Promise.resolve(); }
       const anims = [];
       countries.forEach((c, i) => {
         c.g.querySelectorAll('path').forEach((p) => {
@@ -436,6 +455,16 @@
     const cap = svg.parentElement.querySelector('.ecowas-map__caption');
     const bar = registerFilm(scene, ++n);
     if (cap) cap.before(bar); else svg.after(bar);
+    countries.forEach(({ g }) => {
+      const t = g.querySelector('title');
+      const name = t ? t.textContent.replace(/\s*\(.*\)\s*$/, '') : '';
+      const on = () => bar.coords(name);
+      const off = () => bar.coords(null);
+      g.addEventListener('pointerenter', on);
+      g.addEventListener('focus', on);
+      g.addEventListener('pointerleave', off);
+      g.addEventListener('blur', off);
+    });
     return n;
   }
 
@@ -690,7 +719,7 @@
   const SELF = 'main header, .pillar-intro, .dark-block .container > p, .dark-block .container > .btn, .big-wordmark .container';
 
   function reveals() {
-    const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver(guard((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
         const t = e.target;
@@ -699,7 +728,7 @@
         if (t.matches('svg.plate')) { drawGlyph(t); return; }
         t.classList.add(t.classList.contains('is-split') ? 'w-in' : 'is-in');
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
 
     document.querySelectorAll(ITEMS).forEach((item) => {
       if (item.closest('.hero-soft')) return;
@@ -779,6 +808,7 @@
       const svg = fig.querySelector('svg.plate');
       const bar = fig.querySelector('.scene-bar');
       if (!svg) return;
+      const plain = svg.dataset.cross === 'off';
       svg.setAttribute('data-tilt', '');
       const vb = svg.viewBox.baseVal;
       const cross = svgEl('g', { class: 'dm-cross', 'aria-hidden': 'true' });
@@ -803,6 +833,7 @@
         svg.style.transform = `perspective(900px) rotateY(${((fx - 0.5) * k).toFixed(2)}deg) rotateX(${(-(fy - 0.5) * k).toFixed(2)}deg)`;
         const x = vb.x + fx * vb.width;
         const y = vb.y + fy * vb.height;
+        if (plain) return;
         h.setAttribute('y1', y); h.setAttribute('y2', y);
         v.setAttribute('x1', x); v.setAttribute('x2', x);
         cross.classList.add('is-on');
@@ -913,6 +944,7 @@
   function titleCard() {
     if (!root.classList.contains('intro')) return Promise.resolve();
     try { sessionStorage.setItem('dm-intro', '1'); } catch (e) { /* storage blocked */ }
+    if (!/\bdm-intro\b/.test(window.name)) window.name = `${window.name} dm-intro`.trim();
     const card = el('div', 'dm-intro');
     card.setAttribute('aria-hidden', 'true');
     const mark = el('div', 'dm-intro__mark', ' ');
@@ -974,6 +1006,18 @@
       } catch (err) { stop(err); }
     });
     document.addEventListener('visibilitychange', syncAll);
+    const remembered = () => {
+      let p = null;
+      try { p = localStorage.getItem(STORE); } catch (e) { /* storage blocked */ }
+      return p === 'paused';
+    };
+    window.addEventListener('pageshow', (e) => {
+      if (!e.persisted) return;
+      if (remembered() !== paused) setPaused(remembered()); else syncAll();
+    });
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORE && remembered() !== paused) setPaused(remembered());
+    });
     const onReduce = (e) => { if (e.matches) stop(); };
     if (reducedQuery.addEventListener) reducedQuery.addEventListener('change', onReduce);
   } catch (err) {

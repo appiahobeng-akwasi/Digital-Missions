@@ -15,9 +15,9 @@
   <meta name="twitter:card" content="summary">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="assets/styles.css?v=20260926.6">
-  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');var p=null,s=null;try{p=localStorage.getItem('dm-motion');s=sessionStorage.getItem('dm-intro')}catch(e){}if(p==='paused'){d.classList.add('motion-paused')}else if(!s&&!location.hash){d.classList.add('intro')}setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion','intro')}},2500)}}catch(e){}})(document.documentElement);</script>
-  <script src="assets/motion.js?v=20260926.6" defer></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20260926.8">
+  <script>(function(d){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');var p=null,s=null,w=/\bdm-intro\b/;try{p=localStorage.getItem('dm-motion')}catch(e){}try{s=sessionStorage.getItem('dm-intro')}catch(e){}if(!s&&w.test(window.name)){s='1'}if(p==='paused'){d.classList.add('motion-paused')}else if(!s&&!location.hash){d.classList.add('intro')}if(!d.classList.contains('intro')){try{sessionStorage.setItem('dm-intro','1')}catch(e){}if(!w.test(window.name)){window.name=(window.name+' dm-intro').replace(/^ /,'')}}setTimeout(function(){if(!window.DMMotion){d.classList.remove('motion','intro')}},2500)}}catch(e){}})(document.documentElement);</script>
+  <script src="assets/motion.js?v=20260926.8" defer></script>
 </head>
 <body>
 
