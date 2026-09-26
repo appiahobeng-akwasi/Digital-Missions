@@ -25,9 +25,9 @@
   const EASE_DRAW = 'cubic-bezier(.65,0,.35,1)';
   const EASE_OUT = 'cubic-bezier(.16,1,.3,1)';
   const EASE_SLASH = 'cubic-bezier(.7,0,.84,0)';
-  const HERO = { stagger: 110, dur: 1000, delay: 250 };
-  const PILLAR = { stagger: 90, dur: 900, delay: 0 };
-  const GLYPH = { stagger: 55, dur: 650, delay: 0 };
+  const HERO = { stagger: 110, dur: 1000, delay: 250, span: 1800 };
+  const PILLAR = { stagger: 90, dur: 900, delay: 0, span: 1500 };
+  const GLYPH = { stagger: 55, dur: 650, delay: 0, span: 500 };
   const STORE = 'dm-motion';
   const NS = 'http://www.w3.org/2000/svg';
 
@@ -36,9 +36,11 @@
   const pendingFilms = [];
   let paused = root.classList.contains('motion-paused');
   let dead = false;
+  const quiet = () => paused || dead;
 
   const stop = (err) => {
     dead = true;
+    document.querySelectorAll('figure.scene, figure.scene svg, .btn').forEach((n) => { n.style.transform = ''; n.style.translate = ''; });
     root.classList.remove('motion', 'intro');
     document.querySelectorAll('.dm-intro, canvas.dm-field').forEach((n) => n.remove());
     stillAll();
@@ -81,11 +83,16 @@
   function drawIn(svg, o) {
     if (svg._busy) return svg._busy;
     svg.classList.add('is-drawn');
+    if (quiet()) return Promise.resolve();
+    const wasLive = svg.classList.contains('is-live') && !svg.dataset.loop;
+    if (wasLive) svg.classList.remove('is-live');
     const anims = [];
+    const nodes = drawable(svg);
+    const stagger = Math.min(o.stagger, o.span / Math.max(1, nodes.length));
     let t = o.delay;
     let objectEnd = t;
 
-    drawable(svg).forEach((node) => {
+    nodes.forEach((node) => {
       const tag = node.tagName.toLowerCase();
       const cs = getComputedStyle(node);
       let a;
@@ -119,12 +126,15 @@
       }
       objectEnd = Math.max(objectEnd, t + o.dur);
       anims.push(a);
-      t += o.stagger;
+      t += stagger;
     });
 
     svg._busy = Promise.all(anims.map((a) => a.finished))
       .catch(() => {})
-      .then(() => { svg._busy = null; });
+      .then(() => {
+        svg._busy = null;
+        if (wasLive) svg.classList.add('is-live');
+      });
     return svg._busy;
   }
 
@@ -220,7 +230,14 @@
     root.classList.toggle('motion-paused', v);
     document.querySelectorAll('.scene-bar__btn').forEach((b) => b.setAttribute('aria-pressed', String(v)));
     toggles.forEach((u) => u());
-    if (v) document.querySelectorAll('[data-tilt], .btn').forEach((n) => { n.style.transform = ''; n.style.translate = ''; });
+    if (v) {
+      document.querySelectorAll('figure.scene, figure.scene svg, .btn').forEach((n) => { n.style.transform = ''; n.style.translate = ''; });
+      tickers.forEach((s) => {
+        if (!s.started || !s.bar) return;
+        if (s instanceof SvgLoop) clocks(s.el).forEach((c) => c.setCurrentTime(s.still));
+        else if (s instanceof ClockScene) { s.t = s.still; s.tick(s.t % s.loop); }
+      });
+    }
     syncAll();
   }
 
@@ -246,12 +263,19 @@
     [time, track].forEach((x) => x.setAttribute('aria-hidden', 'true'));
     bar.append(btn, label, time, track);
 
+    label.title = scene.label;
     let lastS = -1;
+    let coords = null;
     bar.update = (t) => {
       const local = t % scene.loop;
       fill.style.transform = `scaleX(${local / scene.loop})`;
       const s = Math.floor(local);
-      if (s !== lastS) { time.textContent = `${fmt(s)} / ${fmt(scene.loop)}`; lastS = s; }
+      if (s !== lastS && !coords) time.textContent = `${fmt(s)} / ${fmt(scene.loop)}`;
+      lastS = s;
+    };
+    bar.coords = (txt) => {
+      coords = txt;
+      time.textContent = txt || `${fmt(Math.max(0, lastS))} / ${fmt(scene.loop)}`;
     };
     scene.bar = bar;
     return bar;
@@ -340,7 +364,7 @@
         stages[i].classList.add('is-active');
         cur = i;
         const g = stages[i].querySelector('svg.plate');
-        if (g && !paused && g.classList.contains('is-drawn')) drawGlyph(g);
+        if (g && !quiet() && g.classList.contains('is-drawn')) drawGlyph(g);
       }
     }, per * stages.length - 0.001);
     scene.intro = () => Promise.resolve();
@@ -387,6 +411,7 @@
     });
     scene.intro = () => {
       svg.classList.add('is-drawn');
+      if (paused) { svg.classList.add('is-live'); return Promise.resolve(); }
       const anims = [];
       countries.forEach((c, i) => {
         c.g.querySelectorAll('path').forEach((p) => {
@@ -439,10 +464,14 @@
       if ('ResizeObserver' in window) new ResizeObserver(() => this.resize()).observe(host);
       host.addEventListener('pointermove', (e) => {
         if (e.pointerType !== 'mouse') return;
-        const r = c.getBoundingClientRect();
-        this.mx = e.clientX - r.left;
-        this.my = e.clientY - r.top;
+        this.mx = e.pageX - this.px;
+        this.my = e.pageY - this.py;
       }, { passive: true });
+      host.addEventListener('pointerenter', () => {
+        const r = host.getBoundingClientRect();
+        this.px = r.left + window.scrollX;
+        this.py = r.top + window.scrollY;
+      });
       host.addEventListener('pointerleave', () => { this.mx = -1e4; this.my = -1e4; });
       this.resize();
       visIO.observe(host);
@@ -452,6 +481,10 @@
     resize() {
       const r = this.el.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      this.px = r.left + window.scrollX;
+      this.py = r.top + window.scrollY;
+      this.rgb = this.o.rgb();
+      this.peakRgb = this.o.peak ? this.o.peak() : null;
       this.w = r.width;
       this.h = r.height;
       this.c.width = Math.max(1, Math.round(r.width * dpr));
@@ -500,13 +533,13 @@
         p.moveTo(x + r, y);
         p.arc(x, y, r, 0, 6.2832);
       }
-      const [R, G, Bl] = o.rgb();
+      const [R, G, Bl] = this.rgb;
       paths.forEach((p, b) => {
         ctx.fillStyle = `rgba(${R},${G},${Bl},${(o.a0 + ((b + 0.5) / B) * o.a1).toFixed(3)})`;
         ctx.fill(p);
       });
       if (o.peak) {
-        const [pr, pg, pb] = o.peak();
+        const [pr, pg, pb] = this.peakRgb;
         ctx.fillStyle = `rgba(${pr},${pg},${pb},${o.peakAlpha || 0.8})`;
         ctx.fill(peak);
       }
@@ -543,15 +576,20 @@
     if (hero && plate && window.matchMedia('(min-width: 1100px)').matches) new DotField(hero, {
       cls: 'dm-field--hero', spacing: 18, r0: 0.4, r1: 1.4, a0: 0.02, a1: 0.32, cursor: 100,
       rgb: () => rgbOf('--color-text-muted'),
-      peak: () => rgbOf('--color-accent'), peakAlpha: 0.55,
       origin: (f) => {
         const a = plate.getBoundingClientRect();
         const b = f.el.getBoundingClientRect();
-        return { x: a.left - b.left + a.width / 2, y: a.top - b.top + a.height / 2, R: Math.max(a.width, a.height) * 0.95 };
+        const x0 = a.left - b.left;
+        const y0 = a.top - b.top;
+        return { x: x0 + a.width / 2, y: y0 + a.height / 2, R: Math.max(a.width, a.height) * 0.95,
+          x0: x0 - 12, y0: y0 - 12, x1: x0 + a.width + 12, y1: y0 + a.height + 12 };
       },
       mask: (nx, ny, f) => {
         const o = f.origin;
-        const d = Math.hypot(nx * f.w - o.x, ny * f.h - o.y);
+        const x = nx * f.w;
+        const y = ny * f.h;
+        if (x > o.x0 && x < o.x1 && y > o.y0 && y < o.y1) return 0;
+        const d = Math.hypot(x - o.x, y - o.y);
         return smooth(0.45, 0.6, nx) * (1 - smooth(o.R * 0.55, o.R, d));
       },
       field: (x, y, t, f) => {
@@ -594,26 +632,29 @@
     return i;
   }
 
-  const GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const LOWER = 'abcdefghijklmnopqrstuvwxyz';
+  const DIGIT = '0123456789';
+  const pick = (set) => set[(Math.random() * set.length) | 0];
   function scrambleText(node, final, dur, done) {
     const t0 = performance.now();
     const step = (now) => {
-      const p = Math.min(1, (now - t0) / dur);
+      const p = Math.min(1, Math.max(0, (now - t0) / dur));
       const fixed = Math.floor(p * final.length);
       let s = final.slice(0, fixed);
       for (let k = fixed; k < final.length; k++) {
         const c = final[k];
-        s += /[A-Za-z0-9]/.test(c) ? GLYPHS[(Math.random() * GLYPHS.length) | 0] : c;
+        s += /[A-Z]/.test(c) ? pick(UPPER) : /[a-z]/.test(c) ? pick(LOWER) : /[0-9]/.test(c) ? pick(DIGIT) : c;
       }
       node.textContent = s;
       if (p < 1) requestAnimationFrame(step); else if (done) done();
     };
-    requestAnimationFrame(step);
+    step(t0);
   }
 
   function scramble(tag) {
     tag.classList.add('is-in');
-    if (tag.children.length || !tag.textContent.trim()) return;
+    if (quiet() || tag.children.length || !tag.textContent.trim()) return;
     const final = tag.textContent;
     const vis = el('span');
     vis.setAttribute('aria-hidden', 'true');
@@ -685,7 +726,7 @@
       io.observe(svg);
       const host = svg.closest('.card, .summary-card, .argument-card, .lifecycle-stage, .audience') || svg.parentElement;
       host.addEventListener('pointerenter', (e) => {
-        if (e.pointerType === 'mouse' && !paused && svg.classList.contains('is-drawn')) drawGlyph(svg);
+        if (e.pointerType === 'mouse' && !quiet() && svg.classList.contains('is-drawn')) drawGlyph(svg);
       });
     });
 
@@ -723,48 +764,51 @@
         item.style.setProperty('--mx', `${e.clientX - r.left}px`);
         item.style.setProperty('--my', `${e.clientY - r.top}px`);
       }, { passive: true });
+      item.addEventListener('pointerleave', () => {
+        item.style.removeProperty('--mx');
+        item.style.removeProperty('--my');
+      });
     });
   }
 
-  /* Plates lean toward the pointer; a CAD crosshair reads out coordinates */
+  /* Plates lean toward the pointer; a CAD crosshair tracks it and the
+     transport bar reads out its coordinates */
   function tilt() {
     if (!finePointer.matches) return;
     document.querySelectorAll('figure.scene').forEach((fig) => {
       const svg = fig.querySelector('svg.plate');
+      const bar = fig.querySelector('.scene-bar');
       if (!svg) return;
-      fig.setAttribute('data-tilt', '');
+      svg.setAttribute('data-tilt', '');
       const vb = svg.viewBox.baseVal;
       const cross = svgEl('g', { class: 'dm-cross', 'aria-hidden': 'true' });
       const h = svgEl('line', { x1: vb.x, x2: vb.x + vb.width, y1: 0, y2: 0 });
       const v = svgEl('line', { y1: vb.y, y2: vb.y + vb.height, x1: 0, x2: 0 });
-      const read = svgEl('text', { x: 0, y: 0 });
-      cross.append(h, v, read);
+      cross.append(h, v);
       svg.append(cross);
-      const big = fig.classList.contains('hero-plate');
-      fig.addEventListener('pointermove', (e) => {
-        if (paused || e.pointerType !== 'mouse') return;
-        const r = fig.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        const k = big ? 7 : 9;
-        fig.style.transform = `perspective(900px) rotateY(${(px * k).toFixed(2)}deg) rotateX(${(-py * k).toFixed(2)}deg)`;
-        const m = svg.getScreenCTM();
-        if (!m) return;
-        const p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse());
-        if (p.x < vb.x || p.y < vb.y || p.x > vb.x + vb.width || p.y > vb.y + vb.height) { cross.classList.remove('is-on'); return; }
-        h.setAttribute('y1', p.y); h.setAttribute('y2', p.y);
-        v.setAttribute('x1', p.x); v.setAttribute('x2', p.x);
-        const flip = p.x > vb.x + vb.width * 0.72;
-        read.setAttribute('x', p.x + (flip ? -8 : 8));
-        read.setAttribute('y', p.y - 8);
-        read.setAttribute('text-anchor', flip ? 'end' : 'start');
-        read.textContent = `X ${Math.round(p.x)}  Y ${Math.round(p.y)}`;
-        cross.classList.add('is-on');
-      });
-      fig.addEventListener('pointerleave', () => {
-        fig.style.transform = '';
+      const k = fig.classList.contains('hero-plate') ? 7 : 9;
+      const off = () => {
+        svg.style.transform = '';
         cross.classList.remove('is-on');
+        if (bar && bar.coords) bar.coords(null);
+      };
+      fig.addEventListener('pointermove', (e) => {
+        if (quiet() || e.pointerType !== 'mouse') { off(); return; }
+        const r = fig.getBoundingClientRect();
+        const w = r.width;
+        const hgt = w * (vb.height / vb.width);
+        const fx = (e.clientX - r.left) / w;
+        const fy = (e.clientY - r.top) / hgt;
+        if (fy > 1) { off(); return; }
+        svg.style.transform = `perspective(900px) rotateY(${((fx - 0.5) * k).toFixed(2)}deg) rotateX(${(-(fy - 0.5) * k).toFixed(2)}deg)`;
+        const x = vb.x + fx * vb.width;
+        const y = vb.y + fy * vb.height;
+        h.setAttribute('y1', y); h.setAttribute('y2', y);
+        v.setAttribute('x1', x); v.setAttribute('x2', x);
+        cross.classList.add('is-on');
+        if (bar && bar.coords) bar.coords(`X ${Math.round(x)} \u00b7 Y ${Math.round(y)}`);
       });
+      fig.addEventListener('pointerleave', off);
     });
   }
 
@@ -772,7 +816,7 @@
     if (!finePointer.matches) return;
     document.querySelectorAll('.btn').forEach((b) => {
       b.addEventListener('pointermove', (e) => {
-        if (paused || e.pointerType !== 'mouse') return;
+        if (quiet() || e.pointerType !== 'mouse') { b.style.transform = ''; return; }
         const r = b.getBoundingClientRect();
         const dx = (e.clientX - (r.left + r.width / 2)) * 0.16;
         const dy = (e.clientY - (r.top + r.height / 2)) * 0.28;
@@ -790,10 +834,13 @@
       a.setAttribute('aria-label', txt);
       let busy = false;
       a.addEventListener('pointerenter', () => {
-        if (paused || busy) return;
+        if (quiet() || busy) return;
         busy = true;
-        a.style.minWidth = `${a.offsetWidth}px`;
-        scrambleText(a, txt, 320, () => { busy = false; a.style.minWidth = ''; });
+        Object.assign(a.style, { display: 'inline-block', width: `${a.offsetWidth}px`, whiteSpace: 'nowrap' });
+        scrambleText(a, txt, 320, () => {
+          busy = false;
+          Object.assign(a.style, { display: '', width: '', whiteSpace: '' });
+        });
       });
     });
   }
@@ -801,13 +848,15 @@
   function parallax() {
     const fig = document.querySelector('.hero-soft figure.hero-plate');
     if (!fig) return;
+    const twoCol = window.matchMedia('(min-width: 1100px)');
     let queued = false;
     const update = () => {
       queued = false;
       const y = Math.min(window.scrollY, 900);
-      fig.style.translate = paused ? '' : `0 ${(y * -0.12).toFixed(1)}px`;
+      fig.style.translate = quiet() || !twoCol.matches ? '' : `0 ${(y * -0.12).toFixed(1)}px`;
     };
     window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    if (twoCol.addEventListener) twoCol.addEventListener('change', update);
   }
 
   /* ============================================================== chrome */
@@ -819,13 +868,21 @@
     bar.append(fill);
     document.body.prepend(bar);
     let queued = false;
+    let max = 0;
+    let y = 0;
+    const measure = () => { max = document.documentElement.scrollHeight - window.innerHeight; };
     const update = () => {
       queued = false;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      fill.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+      fill.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
     };
-    window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
+    window.addEventListener('scroll', () => {
+      y = window.scrollY;
+      if (!queued) { queued = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', () => { measure(); update(); }, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(() => { measure(); update(); }).observe(document.body);
+    measure();
+    y = window.scrollY;
     update();
   }
 
@@ -839,7 +896,12 @@
     dot.setAttribute('aria-hidden', 'true');
     const label = el('span');
     b.append(dot, label);
-    const update = () => { label.textContent = paused ? 'Motion off' : 'Motion on'; };
+    b.setAttribute('role', 'switch');
+    b.setAttribute('aria-label', 'Motion');
+    const update = () => {
+      label.textContent = paused ? 'Motion off' : 'Motion on';
+      b.setAttribute('aria-checked', String(!paused));
+    };
     b.addEventListener('click', () => setPaused(!paused));
     toggles.push(update);
     update();
@@ -874,6 +936,8 @@
       addEventListener('keydown', finish);
       card.addEventListener('pointerdown', finish);
       requestAnimationFrame(() => card.classList.add('is-in'));
+      mark.textContent = 'Digital Missions';
+      mark.style.width = `${mark.offsetWidth}px`;
       scrambleText(mark, 'Digital Missions', 620);
       const tc = () => {
         if (done) return;

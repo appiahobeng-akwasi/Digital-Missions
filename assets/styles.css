@@ -2899,12 +2899,13 @@ details.funder-row > .funder-row__programs {
   transition-delay: calc(250ms + var(--i, 0) * 120ms + var(--c, 0) * 90ms);
 }
 .roll__strip > span { display: block; height: 1em; line-height: 1; }
-.is-in .roll__strip { transform: translateY(calc(var(--to) * -1em)); }
+.roll__strip { transform: translateY(calc(var(--to) * -1em)); }
+.motion:not(.motion-paused) .stat:not(.is-in) .roll__strip { transform: none; }
 
 /* --- Lifecycle: chapters playing in sequence ---------------------------- */
 
 .motion .lifecycle-stage { position: relative; transition: background-color .6s ease; }
-.motion .lifecycle-stage.is-active { background: var(--color-hero-bg); }
+.motion .lifecycle-stage.is-active { background-color: var(--color-hero-bg); }
 .lc-seg {
   position: absolute;
   inset: 0 0 auto 0;
@@ -2981,6 +2982,7 @@ html.intro body::after {
 }
 .dm-intro.is-out { clip-path: inset(0 0 100% 0); }
 .dm-intro__mark {
+  white-space: nowrap;
   font-size: clamp(1.75rem, 3vw + 1rem, 3rem);
   font-weight: 500;
   letter-spacing: -0.015em;
@@ -3064,11 +3066,11 @@ html.motion-paused::view-transition-new(root) { animation: none; }
 
 /* --- Plates lean toward the pointer; a crosshair reads out coordinates --- */
 
-.motion figure.scene[data-tilt] {
-  transition: transform .5s var(--ease-out), translate .2s linear;
-  transform-style: preserve-3d;
+.motion svg.plate[data-tilt] {
+  transition: transform .5s var(--ease-out);
   will-change: transform;
 }
+.motion .hero-soft figure.hero-plate { transition: translate .2s linear; }
 .dm-cross { pointer-events: none; opacity: 0; transition: opacity .2s ease; }
 .dm-cross.is-on { opacity: 1; }
 .dm-cross line {
@@ -3077,15 +3079,6 @@ html.motion-paused::view-transition-new(root) { animation: none; }
   stroke-dasharray: 2 4;
   vector-effect: non-scaling-stroke;
   opacity: .55;
-}
-.dm-cross text {
-  fill: var(--color-accent);
-  stroke: none;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: .08em;
-  font-variant-numeric: tabular-nums;
 }
 .motion-paused .dm-cross { display: none; }
 
@@ -3272,4 +3265,36 @@ html.motion-paused::view-transition-new(root) { animation: none; }
   stroke-width: 1;
   stroke-dasharray: 2 4;
   vector-effect: non-scaling-stroke;
+}
+
+/* --- Motion off: everything is simply there -------------------------------- */
+
+html.motion.motion-paused .hero-tag,
+html.motion.motion-paused .hero-soft .hero-summary,
+html.motion.motion-paused .hero-soft .hero-actions,
+html.motion.motion-paused [data-reveal] > *,
+html.motion.motion-paused [data-reveal-self] { opacity: 1; transform: none; transition: none; }
+html.motion.motion-paused .w__i { transform: none; transition: none; }
+html.motion.motion-paused .roll__strip,
+html.motion.motion-paused .stat .stat__num { transition: none; }
+html.motion.motion-paused .plate:not(.is-drawn) > :not(title):not(.fx) { opacity: 1; }
+
+/* --- Rows without inline padding keep the light but lose the outline ----- */
+
+@media (pointer: fine) {
+  .motion .audience:hover,
+  .motion .post-row:hover { box-shadow: none; }
+}
+
+/* --- The transport bar's room is held before the engine builds it -------- */
+
+.motion svg.plate.hero-plate[data-loop],
+.motion svg.plate.pillar-plate[data-loop] { margin-bottom: 3.6rem; }
+
+@media (max-width: 480px) {
+  .scene-bar { letter-spacing: .08em; column-gap: .5rem; }
+}
+
+@media print {
+  .roll__strip { transform: translateY(calc(var(--to) * -1em)) !important; transition: none !important; }
 }
