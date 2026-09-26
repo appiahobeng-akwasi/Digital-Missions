@@ -93,7 +93,7 @@
     svg.classList.add('is-drawn');
     if (quiet()) return Promise.resolve();
     const wasLive = svg.classList.contains('is-live') && !svg.dataset.loop;
-    if (wasLive) svg.classList.remove('is-live');
+    if (wasLive) svg.classList.add('is-redrawing');
     const anims = [];
     const nodes = drawable(svg);
     const stagger = Math.min(o.stagger, o.span / Math.max(1, nodes.length));
@@ -141,7 +141,7 @@
       .catch(() => {})
       .then(() => {
         svg._busy = null;
-        if (wasLive) svg.classList.add('is-live');
+        if (wasLive) svg.classList.remove('is-redrawing');
       });
     return svg._busy;
   }
@@ -240,7 +240,7 @@
     document.querySelectorAll('.scene-bar__btn').forEach((b) => b.setAttribute('aria-pressed', String(v)));
     toggles.forEach((u) => u());
     if (v) {
-      document.querySelectorAll('figure.scene, figure.scene svg, .btn').forEach((n) => { n.style.transform = ''; n.style.translate = ''; });
+      document.querySelectorAll('figure.scene, figure.scene svg, .btn').forEach((n) => { n.style.transform = ''; });
       tickers.forEach((s) => {
         if (!s.started || !s.bar) return;
         if (s instanceof SvgLoop) clocks(s.el).forEach((c) => c.setCurrentTime(s.still));
@@ -685,11 +685,15 @@
     tag.classList.add('is-in');
     if (quiet() || tag.children.length || !tag.textContent.trim()) return;
     const final = tag.textContent;
+    const h = tag.offsetHeight;
     const vis = el('span');
     vis.setAttribute('aria-hidden', 'true');
     tag.textContent = '';
     tag.append(el('span', 'dm-sr', final), vis);
-    scrambleText(vis, final, Math.min(900, 280 + final.length * 22));
+    Object.assign(tag.style, { height: `${h}px`, overflow: 'hidden' });
+    scrambleText(vis, final, Math.min(900, 280 + final.length * 22), () => {
+      Object.assign(tag.style, { height: '', overflow: '' });
+    });
   }
 
   function odometer(num) {
@@ -746,6 +750,11 @@
     document.querySelectorAll('.hero-tag').forEach((t) => { if (!t.closest('.hero-soft')) io.observe(t); });
     document.querySelectorAll('main h2').forEach((h) => {
       if (h.closest('.hero-soft') || h.closest('[data-reveal]')) return;
+      const r = h.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0 && !root.classList.contains('intro-played')) {
+        h.classList.add('is-split');
+        return;
+      }
       splitWords(h);
       io.observe(h);
     });
@@ -881,12 +890,16 @@
     if (!fig) return;
     const twoCol = window.matchMedia('(min-width: 1100px)');
     let queued = false;
+    let sy = window.scrollY;
     const update = () => {
       queued = false;
-      const y = Math.min(window.scrollY, 900);
-      fig.style.translate = quiet() || !twoCol.matches ? '' : `0 ${(y * -0.12).toFixed(1)}px`;
+      if (paused && !dead) return;
+      fig.style.translate = dead || !twoCol.matches ? '' : `0 ${(Math.min(sy, 900) * -0.12).toFixed(1)}px`;
     };
-    window.addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('scroll', () => {
+      sy = window.scrollY;
+      if (!queued) { queued = true; requestAnimationFrame(update); }
+    }, { passive: true });
     if (twoCol.addEventListener) twoCol.addEventListener('change', update);
   }
 
@@ -960,6 +973,7 @@
       const finish = () => {
         if (done) return;
         done = true;
+        root.classList.add('intro-played');
         removeEventListener('keydown', finish);
         card.classList.add('is-out');
         setTimeout(() => card.remove(), 700);

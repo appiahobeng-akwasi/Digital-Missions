@@ -3332,3 +3332,16 @@ html.motion.motion-paused .plate:not(.is-drawn) > :not(title):not(.fx) { opacity
   paint-order: stroke;
   stroke-linejoin: round;
 }
+
+/* --- Glyph redraws hide the loop at once ----------------------------------- */
+
+.motion .plate.is-redrawing .fx { opacity: 0; transition: none; }
+
+/* --- Film titles wrap rather than truncate --------------------------------- */
+
+.scene-bar__label {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.35;
+}
